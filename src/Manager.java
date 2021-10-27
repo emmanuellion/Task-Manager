@@ -24,5 +24,6 @@ public class Manager {
         one.map.put(butt, 3);
         butt.addActionListener(one);
         one.add(butt);
+        ReaderJSON a = new ReaderJSON("src/file.json");
     }
 }

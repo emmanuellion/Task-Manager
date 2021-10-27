@@ -21,13 +21,9 @@ public class Window extends JFrame implements ComponentListener, ActionListener 
 
         //this.setAlwaysOnTop(true); //Affiche la fenêtre au-dessus de toutes les autres fenêtres
         Dimension dim = new Dimension(); //Déclare un objet Dimension
-        dim.height = 400; //Initialise la donnée membre height
-        dim.width = 800; //Initialise la donnée membre width
+        dim.height = 780; //Initialise la donnée membre height
+        dim.width = 1280; //Initialise la donnée membre width
         this.setMinimumSize(dim); //Met la taille minimale à l'objet dim (de type Dimension)
-        dim.height = 1000;
-        dim.width = 1500;
-        width = 1000;
-        height = 500;
         this.setSize(dim);
         this.setLocationRelativeTo(null); //Positionne la fenêtre au centre de l'écran
         this.setVisible(true); //Affiche la fenêtre
