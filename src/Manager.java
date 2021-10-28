@@ -1,7 +1,6 @@
 import Window.Window;
 import javax.swing.*;
 import java.io.IOException;
-import java.util.*;
 
 public class Manager {
     public static void main(String[] args) throws IOException {
