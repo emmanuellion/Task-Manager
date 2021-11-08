@@ -8,31 +8,33 @@ public class ReaderEvent {
         try(Scanner scan = new Scanner(file)) {
             Map <String, String[]> map_event = new HashMap<>();
             while(scan.hasNextLine()) {
-                Vector <String> tmp = new Vector<>();
-                StringBuilder tmp_info = new StringBuilder();
                 String str = scan.nextLine();
-                for (String car : str.split("")){
-                    if(!Objects.equals(car, "~")){
-                        tmp_info.append(car);
-                    }else{
-                        tmp.add(tmp_info.toString());
-                        tmp_info = new StringBuilder();
+                if(!Objects.equals(str, "")){
+                    Vector <String> tmp = new Vector<>();
+                    StringBuilder tmp_info = new StringBuilder();
+                    for (String car : str.split("")){
+                        if(!Objects.equals(car, "~")){
+                            tmp_info.append(car);
+                        }else{
+                            tmp.add(tmp_info.toString());
+                            tmp_info = new StringBuilder();
+                        }
                     }
-                }
-                boolean title_passed = false;
-                String title = "";
-                String[] element = new String[5];
-                int i = 0;
-                for(String info : tmp){
-                    if(!title_passed){
-                        title = info;
-                        title_passed = true;
-                    }else{
-                        element[i] = info;
-                        i++;
+                    boolean title_passed = false;
+                    String title = "";
+                    String[] element = new String[5];
+                    int i = 0;
+                    for(String info : tmp){
+                        if(!title_passed){
+                            title = info;
+                            title_passed = true;
+                        }else{
+                            element[i] = info;
+                            i++;
+                        }
                     }
+                    map_event.put(title, element);
                 }
-                map_event.put(title, element);
             }
             return map_event;
         } catch (FileNotFoundException e) {

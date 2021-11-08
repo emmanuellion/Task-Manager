@@ -1,4 +1,5 @@
 import Window.Window;
+import EButton.EButton;
 import javax.swing.*;
 import java.io.IOException;
 
@@ -6,19 +7,17 @@ public class Manager {
     public static void main(String[] args) throws IOException {
         Window one = new Window("a");
 
-        JButton bt = new JButton("a");
-        bt.setBounds(300, 200, 100, 100);
+        EButton bt = new EButton("a", 300, 200, 100, 100, 255, 0, 0);
         one.map.put(bt, 1);
-        one.all_element.add(bt);
         bt.addActionListener(one);
         one.add(bt);
 
-        JButton but = new JButton("b");
+        EButton but = new EButton("b", 400, 250, 100, 100, 255, 0, 0);
         one.map.put(but, 2);
         but.addActionListener(one);
         one.add(but);
 
-        JButton butt = new JButton("c");
+        EButton butt = new EButton("c", 500, 300, 100, 100, 255, 0, 0);
         one.map.put(butt, 3);
         butt.addActionListener(one);
         one.add(butt);
