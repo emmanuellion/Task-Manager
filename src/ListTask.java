@@ -26,8 +26,16 @@ public class ListTask {
     ListTask() {
         l = new Vector<>(0);
     }
-
-    public void ajout() {
+    //
+    public String get(int index) {
+        return l.get(index).getInfos();
+    }
+    //
+    public int taille() {
+        return l.size();
+    }
+    //
+    public void ajoutTache(String tit, String cat, String desc, String b_d, String b_h, String e_d, String e_h, String imp) {
         /*verif = false;
         verif2 = false;
         do {
@@ -174,14 +182,12 @@ public class ListTask {
         //
         t = new Task(cat, imp, d, h, fonc);
         l.add(t);*/
+        t = new Task(tit, cat, desc, b_d, b_h, e_d, e_h, imp);
+        l.add(t);
     }
     //
-    public void get(int i) {
-        l.get(i).getInfos();
-    }
-    //
-    public int taille() {
-        return l.size();
+    public void suppressionTache(int index) {
+        l.remove(index);
     }
     //
     public static void main(String[] args) {
