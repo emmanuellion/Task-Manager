@@ -29,7 +29,7 @@ public class Window extends JFrame implements ComponentListener, ActionListener 
         this.setSize(dim);
         this.setLocationRelativeTo(null); //Positionne la fenêtre au centre de l'écran
         this.setVisible(true); //Affiche la fenêtre
-        this.setLayout(null);
+        this.setLayout(new FlowLayout());
         addComponentListener(this);
     }
 

@@ -8,27 +8,27 @@ public class ListTask {
     private Vector<Task> l;
     private Task t;
     // Variables nécessaires pour ajout()
-    static private Scanner scan = new Scanner(System.in);
-    static private Vector<String> category_list = new Vector<>(0);
-    static private String[] importance_list = {"Nulle", "Très faible", "Faible", "Moyenne", "Élevée", "Urgent", "ASAP"};
+    /*static private final Scanner scan = new Scanner(System.in);
+    static private final Vector<String> category_list = new Vector<String>(0);
+    static private final String[] importance_list = {"Nulle", "Très faible", "Faible", "Moyenne", "Élevée", "Urgent", "ASAP"};
     static private Pattern pat_check;
     static private Matcher mat_check;
     static private boolean bool_check;
     static private boolean verif = false, verif2 = false;
     static private String cat, imp, d, h, fonc;
-    static private int compt_erreur;
-    static private Calendar annee = new GregorianCalendar();
+    static private int compt_erreur;*/
+    static private final Calendar annee = new GregorianCalendar();
     // Variables nécessaires pour sauvegarder()
-    private static File f;
+    /*private static File f;
     private static BufferedWriter FW;
-    private static BufferedReader FR;
+    private static BufferedReader FR;*/
 
     ListTask() {
         l = new Vector<>(0);
     }
 
     public void ajout() {
-        verif = false;
+        /*verif = false;
         verif2 = false;
         do {
             //Saisie de la catégorie de l'évènement
@@ -167,13 +167,13 @@ public class ListTask {
                     }
                 }
             }
-        } while(verif==false);
+        } while(!verif);
         System.out.println("Pour finir, veuillez saisir le nom de votre tâche");
         fonc = scan.nextLine();
         fonc = scan.nextLine();
         //
         t = new Task(cat, imp, d, h, fonc);
-        l.add(t);
+        l.add(t);*/
     }
     //
     public void get(int i) {
@@ -184,40 +184,10 @@ public class ListTask {
         return l.size();
     }
     //
-    public void sauvegarder() {
-        try {
-            f = new File("liste_taches.txt");
-        } catch(Exception e) {
-            System.out.println(e.getMessage());
-        }
-        if((f.exists())) {
-            try {
-                FW = new BufferedWriter(new FileWriter(f));
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-            for(int i = 0; i < taille(); i++) {
-                try {
-                    FW.write(l.get(i).getInfos());
-                    FW.newLine();
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-            }
-            try {
-                FW.close();
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-        } else {
-            System.out.println("Le fichier liste_taches.txt a été supprimé ou déplacé, veuillez le restaurer ou le replacer.");
-        }
-    }
-    //
     public static void main(String[] args) {
         ListTask liste_tache = new ListTask();
-        liste_tache.ajout();
+        /*liste_tache.ajout();
         liste_tache.get(0);
-        liste_tache.sauvegarder();
+        liste_tache.sauvegarder();*/
     }
 }

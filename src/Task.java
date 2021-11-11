@@ -1,20 +1,18 @@
-import java.util.*;
-import java.util.regex.*;
-import java.lang.*;
-
 public class Task {
-    private String category, importance, date, hour, name_task;
-    private String task_infos;
+    private String title, category, description, b_date, b_hour, e_date, e_hour, importance;
 
-    Task(String category, String importance, String date, String hour, String name_task) {
+    Task(String title, String category, String description, String b_date, String b_hour, String e_date, String e_hour, String importance) {
+        this.title = title;
         this.category = category;
+        this.description = description;
+        this.b_hour = b_hour;
+        this.b_date = b_date;
+        this.e_hour = e_hour;
+        this.e_date = e_date;
         this.importance = importance;
-        this.hour = hour;
-        this.date = date;
-        this.name_task = name_task;
     }
     //
     public String getInfos() {
-        return task_infos = category + "|" + importance + "|" + date + "|" + hour + "|" + name_task;
+        return (title + "~" + category + "~" + description + "~" + b_date + "~" + b_hour + "~" + e_date + "~" + e_hour + "~" + importance);
     }
 }
