@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 
 public class Window extends JFrame implements ComponentListener, ActionListener {
     public Vector all_element = new Vector();
-    public Map<EButton, Integer> map = new HashMap<>();
+    public Map<JButton, Integer> map = new HashMap<>();
     private int width;
     private int height;
 
@@ -35,7 +35,7 @@ public class Window extends JFrame implements ComponentListener, ActionListener 
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        for(Map.Entry<EButton, Integer> bt : map.entrySet()){
+        for(Map.Entry<JButton, Integer> bt : map.entrySet()){
             if(bt.getKey() == e.getSource()){
                 switch (bt.getValue()) {
                     case 1 -> System.out.println("a");
