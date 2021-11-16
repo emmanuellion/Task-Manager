@@ -12,7 +12,6 @@ import java.awt.event.ActionListener;
 public class Window extends JFrame implements ComponentListener, ActionListener {
     public Vector all_element = new Vector();
     public Map<JButton, Integer> map = new HashMap<>();
-    public FlowLayout grid;
     private int width;
     private int height;
 
@@ -28,10 +27,11 @@ public class Window extends JFrame implements ComponentListener, ActionListener 
         dim.width = 1280; //Initialise la donnée membre width
         this.setMinimumSize(dim); //Met la taille minimale à l'objet dim (de type Dimension)
         this.setSize(dim);
+        FlowLayout t = new FlowLayout();
+        t.setAlignOnBaseline(false);
+        this.setLayout(new BorderLayout());
         this.setLocationRelativeTo(null); //Positionne la fenêtre au centre de l'écran
         this.setVisible(true); //Affiche la fenêtre
-        grid = new FlowLayout();
-        this.setLayout(grid);
         addComponentListener(this);
     }
 
@@ -42,8 +42,10 @@ public class Window extends JFrame implements ComponentListener, ActionListener 
                 switch (bt.getValue()) {
                     case 1 -> System.out.println("a");
                     case 2 -> System.out.println("b");
-                    default -> System.out.println("c");
+                    case 3 -> System.out.println("c");
+                    default -> System.out.println("z");
                 }
+                bt.getKey().setBackground(new Color(255, 255, 0));
             }
         }
     }
