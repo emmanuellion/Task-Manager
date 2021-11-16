@@ -24,30 +24,13 @@ public class SaveEvent {
                 System.out.println("Evènement déjà existant !");
             }
         }*/
-        try {
-            f = new File("file.ev");
-        } catch(Exception e) {
-            System.out.println(e.getMessage());
-        }
-        if((f.exists())) {
-            try {
-                FW = new BufferedWriter(new FileWriter(f));
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
+        if((file.exists())) {
+            FileWriter write = new FileWriter(file, true);
+            for(int i = 0; i < listTask.size(); i++) {
+                write.append(listTask.get(i));
+                write.append("\n");
             }
-            for(int i = 0; i < listTask.taille(); i++) {
-                try {
-                    FW.write(listTask.get(i));
-                    FW.newLine();
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-            }
-            try {
-                FW.close();
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
+            write.close();
         } else {
             System.out.println("Le fichier file.ev a été supprimé ou déplacé, veuillez le restaurer ou le replacer.");
         }

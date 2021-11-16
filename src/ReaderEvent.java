@@ -4,39 +4,26 @@ import java.io.*;
 public class ReaderEvent {
     private static final File file = new File("src/file.ev");
 
-    public Map<String, String[]> get_data(){
+    public ListTask get_data(){
         try(Scanner scan = new Scanner(file)) {
-            Map <String, String[]> map_event = new HashMap<>();
+            ListTask list = new ListTask();
             while(scan.hasNextLine()) {
                 String str = scan.nextLine();
                 if(!Objects.equals(str, "")){
                     Vector <String> tmp = new Vector<>();
-                    StringBuilder tmp_info = new StringBuilder();
+                    StringBuilder builder = new StringBuilder();
                     for (String car : str.split("")){
                         if(!Objects.equals(car, "~")){
-                            tmp_info.append(car);
+                            builder.append(car);
                         }else{
-                            tmp.add(tmp_info.toString());
-                            tmp_info = new StringBuilder();
+                            tmp.add(builder.toString());
+                            builder.delete(0, builder.length());
                         }
                     }
-                    boolean title_passed = false;
-                    String title = "";
-                    String[] element = new String[5];
-                    int i = 0;
-                    for(String info : tmp){
-                        if(!title_passed){
-                            title = info;
-                            title_passed = true;
-                        }else{
-                            element[i] = info;
-                            i++;
-                        }
-                    }
-                    map_event.put(title, element);
+                    list.add(tmp.get(0), tmp.get(1), tmp.get(2), tmp.get(3), tmp.get(4), tmp.get(5), tmp.get(6), tmp.get(7));
                 }
             }
-            return map_event;
+            return list;
         } catch (FileNotFoundException e) {
             System.out.println(e);
             return null;
@@ -44,9 +31,9 @@ public class ReaderEvent {
     }
 
     public void print(){
-        Map<String, String[]> tmp = get_data();
-        for(String event : tmp.keySet()){
-            System.out.println("Event => " + event + " has info :\n" + Arrays.toString(tmp.get(event)) + "\n===============");
+        ListTask list = get_data();
+        for(int i = 0; i < list.size(); i++){
+            System.out.println("Event => " + list.get(i) + "\n===============");
         }
     }
 }

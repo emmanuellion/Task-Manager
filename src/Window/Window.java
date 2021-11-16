@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 public class Window extends JFrame implements ComponentListener, ActionListener {
     public Vector all_element = new Vector();
     public Map<JButton, Integer> map = new HashMap<>();
+    public FlowLayout grid;
     private int width;
     private int height;
 
@@ -29,7 +30,8 @@ public class Window extends JFrame implements ComponentListener, ActionListener 
         this.setSize(dim);
         this.setLocationRelativeTo(null); //Positionne la fenêtre au centre de l'écran
         this.setVisible(true); //Affiche la fenêtre
-        this.setLayout(new FlowLayout());
+        grid = new FlowLayout();
+        this.setLayout(grid);
         addComponentListener(this);
     }
 
