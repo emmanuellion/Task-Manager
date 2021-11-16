@@ -3,7 +3,8 @@ import EButton.EButton;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
-import java.util.Vector;
+import Task.ListTask;
+import EventHandler.*;
 
 public class Manager {
     public static void main(String[] args) throws IOException {
@@ -34,9 +35,9 @@ public class Manager {
         z.addActionListener(one);
         one.add(z, BorderLayout.NORTH);
 
-        /*new ReaderEvent().print();
+        new ReaderEvent().print();
         ListTask list = new ListTask();
         list.add("caa", "Vital", "Dormir => ronpiche", "27/10/2021", "17h", "27/10/2021", "23", "4");
-        new SaveEvent().save(list);*/
+        new SaveEvent().save(list);
     }
 }

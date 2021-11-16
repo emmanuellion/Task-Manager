@@ -1,5 +1,4 @@
 package Window;
-import EButton.EButton;
 
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
@@ -10,10 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Window extends JFrame implements ComponentListener, ActionListener {
-    public Vector all_element = new Vector();
     public Map<JButton, Integer> map = new HashMap<>();
-    private int width;
-    private int height;
 
     public Window(String s){
         super(s);
@@ -27,8 +23,6 @@ public class Window extends JFrame implements ComponentListener, ActionListener 
         dim.width = 1280; //Initialise la donnée membre width
         this.setMinimumSize(dim); //Met la taille minimale à l'objet dim (de type Dimension)
         this.setSize(dim);
-        FlowLayout t = new FlowLayout();
-        t.setAlignOnBaseline(false);
         this.setLayout(new BorderLayout());
         this.setLocationRelativeTo(null); //Positionne la fenêtre au centre de l'écran
         this.setVisible(true); //Affiche la fenêtre
