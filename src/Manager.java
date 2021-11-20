@@ -35,6 +35,14 @@ public class Manager {
         z.addActionListener(one);
         one.add(z, BorderLayout.NORTH);
 
+        Scrollbar scroll=new Scrollbar();
+		scroll.setOrientation(Scrollbar.VERTICAL);
+		scroll.setBounds(one.getContentPane().getWidth()-50,0,50,one.getContentPane().getHeight());
+		scroll.setMaximum(400);
+		scroll.setMinimum(0);
+        scroll.setVisibleAmount(30);
+        one.add(scroll);
+        
         new ReaderEvent().print();
         ListTask list = new ListTask();
         list.add("caa", "Vital", "Dormir => ronpiche", "27/10/2021", "17h", "27/10/2021", "23", "4");
