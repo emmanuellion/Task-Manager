@@ -5,7 +5,8 @@ import java.lang.*;
 
 public class ListTask {
     private Vector<Task> l;
-    static private final Calendar annee = new GregorianCalendar();
+    static private Vector<String> listCat;
+    //static private final Calendar annee = new GregorianCalendar();
 
     public ListTask() {
         l = new Vector<>(0);
@@ -25,5 +26,19 @@ public class ListTask {
     //
     public void del(int index) {
         l.remove(index);
+    }
+    //
+    public void ajoutCat(String hey) {
+        int compteur=0;
+        for(int i = 0; i<listCat.length(); i++) {
+            if(hey.isEqual(listCat.at(i))) {
+                compteur++;
+            }
+        }
+        if(compteur==listCat.length()) {
+            listCat.add(hey);
+        } else {
+            System.out.println("Catégorie déjà existante !");
+        }
     }
 }
