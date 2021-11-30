@@ -30,13 +30,17 @@ public class ListTask {
         l.remove(index);
     }
     //
-    public Vector<Task> getByCat(String category){
-        Vector<Task> listFromThisCat = new Vector<Task>();
+    public Vector<Task> getByOptions(String index, boolean isCat){
+        Vector<Task> listFromThisOpt = new Vector<>();
         for(Task t : l){
-            if(Objects.equals(t.getCat(), category)){
-                listFromThisCat.add(t);
-            }
+            if(isCat)
+                if(Objects.equals(t.getCat(), index))
+                    listFromThisOpt.add(t);
+            else
+                if(Objects.equals(t.getImp(), index))
+                    listFromThisOpt.add(t);
+
         }
-        return listFromThisCat;
+        return listFromThisOpt;
     }
 }

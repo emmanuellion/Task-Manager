@@ -28,4 +28,9 @@ public class Task {
     public String getCat(){
         return category;
     }
+
+    public String getImp(){
+        return importance;
+    }
+
 }
