@@ -24,4 +24,8 @@ public class Task {
     public String getInfos() {
         return (title + "~" + category + "~" + description + "~" + b_date + "~" + b_hour + "~" + e_date + "~" + e_hour + "~" + importance + "~");
     }
+
+    public String getCat(){
+        return category;
+    }
 }

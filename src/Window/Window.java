@@ -23,7 +23,7 @@ public class Window extends JFrame implements ComponentListener, ActionListener 
         dim.width = 1280; //Initialise la donnée membre width
         this.setMinimumSize(dim); //Met la taille minimale à l'objet dim (de type Dimension)
         this.setSize(dim);
-        this.setLayout(new BorderLayout());
+        this.setLayout(null);
         this.setLocationRelativeTo(null); //Positionne la fenêtre au centre de l'écran
         this.setVisible(true); //Affiche la fenêtre
         addComponentListener(this);

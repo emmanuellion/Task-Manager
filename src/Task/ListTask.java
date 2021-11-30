@@ -16,6 +16,8 @@ public class ListTask {
         return l.get(index).getInfos();
     }
     //
+    public Task getTask(int index){ return l.get(index); }
+    //
     public int size() {
         return l.size();
     }
@@ -28,17 +30,13 @@ public class ListTask {
         l.remove(index);
     }
     //
-    public void ajoutCat(String hey) {
-        int compteur=0;
-        for(int i = 0; i<listCat.length(); i++) {
-            if(hey.isEqual(listCat.at(i))) {
-                compteur++;
+    public Vector<Task> getByCat(String category){
+        Vector<Task> listFromThisCat = new Vector<Task>();
+        for(Task t : l){
+            if(Objects.equals(t.getCat(), category)){
+                listFromThisCat.add(t);
             }
         }
-        if(compteur==listCat.length()) {
-            listCat.add(hey);
-        } else {
-            System.out.println("Catégorie déjà existante !");
-        }
+        return listFromThisCat;
     }
 }
