@@ -17,7 +17,7 @@ public class TaskManager {
         for(int i = 0; i < list.size(); i++){
             JTextArea txt = new JTextArea(list.get(i));
             txt.setBounds(700,100+i*50,200,50);
-            txt.setBackground(new Color(255,255,255));
+            txt.setBackground(new Color(255,0,0));
             w.add(txt);
         }
     }

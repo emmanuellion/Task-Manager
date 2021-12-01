@@ -1,15 +1,11 @@
 package Window;
 
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
 import java.util.*;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class Window extends JFrame implements ComponentListener, ActionListener {
-    public Map<JButton, Integer> map = new HashMap<>();
+public class Window extends JFrame{
+    //public Map<JButton, Integer> map = new HashMap<>();
 
     public Window(String s){
         super(s);
@@ -23,13 +19,13 @@ public class Window extends JFrame implements ComponentListener, ActionListener 
         dim.width = 1280; //Initialise la donnée membre width
         this.setMinimumSize(dim); //Met la taille minimale à l'objet dim (de type Dimension)
         this.setSize(dim);
-        this.setLayout(null);
+        this.setLayout(new FlowLayout());
         this.setLocationRelativeTo(null); //Positionne la fenêtre au centre de l'écran
         this.setVisible(true); //Affiche la fenêtre
-        addComponentListener(this);
+        //addComponentListener(this);
     }
 
-    @Override
+   /* @Override
     public void actionPerformed(ActionEvent e) {
         for(Map.Entry<JButton, Integer> bt : map.entrySet()){
             if(bt.getKey() == e.getSource()){
@@ -44,11 +40,9 @@ public class Window extends JFrame implements ComponentListener, ActionListener 
         }
     }
 
-    public static void main(String[] args) {}
-
     @Override
     public void componentResized(ComponentEvent e) {
-        /*Rectangle base = this.getBounds();
+        Rectangle base = this.getBounds();
         int _tmp_win_width = (int) base.getWidth();
         int _tmp_win_height = (int) base.getHeight();
         for(JComponent el : all_element){
@@ -68,15 +62,15 @@ public class Window extends JFrame implements ComponentListener, ActionListener 
             System.out.println("===========\nWidth : " + el.getWidth() + "\nHeight : " + el.getHeight());
         }
         width = _tmp_win_width;
-        height = _tmp_win_height;*/
-    }
+        height = _tmp_win_height;
+    }*/
 
-    @Override
-    public void componentMoved(ComponentEvent e) {}
+    //@Override
+    //public void componentMoved(ComponentEvent e) {}
 
-    @Override
-    public void componentShown(ComponentEvent e) {}
+    //@Override
+    //public void componentShown(ComponentEvent e) {}
 
-    @Override
-    public void componentHidden(ComponentEvent e) {}
+    //@Override
+    //public void componentHidden(ComponentEvent e) {}
 }
