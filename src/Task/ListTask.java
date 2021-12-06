@@ -55,11 +55,23 @@ public class ListTask {
     public void add(String tit, String cat, String desc, String b_d, String b_h, String e_d, String e_h, String imp) {
         l.add(new Task(tit, cat, desc, b_d, b_h, e_d, e_h, imp));
     }
-    //
+
+    /**
+     * Cette méthode permet de supprimer une tâche se positionnant à la ième position dans le tableau
+     * @author Evan
+     * @param index Le paramètre 'index' correspond à l'index de la tâche à supprimer
+     */
     public void del(int index) {
         l.remove(index);
     }
-    //
+
+    /**
+     * Cette méthode permet de retourner une liste trié en fonction des paramètres renseignés
+     * @author Emmanuel
+     * @param index Le paramètre 'index' correspond à une chaîne de caractères permettant de trier les tâches sur un critère d'appartenance (que ce soit de catégorie ou d'importance)
+     * @param isCat Le paramètre 'isCat' correspond à un boolean visant à choisir si nous voulons récupérer les tâches en fonction de l'appartenance à une catégorie ou en fonction de leur importance
+     * @return Un vecteur de 'Task' correspondant à la liste trier des évènements selon les critères passés en paramètres
+     */
     public Vector<Task> getByOptions(String index, boolean isCat){
         Vector<Task> listFromThisOpt = new Vector<>();
         for(Task t : l){
