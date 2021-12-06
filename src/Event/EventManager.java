@@ -1,4 +1,4 @@
-package Task;
+package Event;
 
 import EventHandler.ReaderEvent;
 import Window.Window;
@@ -6,18 +6,18 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Cette classe permet d'afficher les tâches sauvegardées
+ * Cette classe permet d'afficher les évènements sauvegardés
  * @author Emmanuel
  */
-public class TaskManager {
+public class EventManager {
     private  Window w = null;
 
-    public TaskManager(Window _w){
+    public EventManager(Window _w){
         w = _w;
     }
 
     public void go(){
-        ListTask list = new ReaderEvent().get_data();
+        ListEvent list = new ReaderEvent().get_data();
         for(int i = 0; i < list.size(); i++){
             JTextArea txt = new JTextArea(list.get(i));
             txt.setBounds(700,100+i*50,200,50);

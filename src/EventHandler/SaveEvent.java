@@ -1,30 +1,30 @@
 package EventHandler;
 
 import java.io.*;
-import Task.ListTask;
+import Event.ListEvent;
 
 /**
- * Cette classe permet de sauvegarder une liste de tâches dans un fichier
- * @author Evan & Emmanuel
+ * Cette classe permet de sauvegarder une liste d'évènements dans un fichier
+ * @author Evan et Emmanuel
  */
 public class SaveEvent {
     /**
-     * Instaciation du fichier où sont stockés les évènements
+     * Instanciation du fichier où sont stockés les évènements
      */
     private static final File file = new File("src/file.ev");
 
     /**
-     * Cette méthode permet de sauvegarder dans un fichier instancié une liste de tâches renseignée en paramètre de la fonction
+     * Cette méthode permet de sauvegarder dans un fichier instancié une liste d'évènements renseignée en paramètre de la fonction
      * lors de son appel
-     * @author Evan & Emmanuel
-     * @param listTask Le paramètre 'listTask' sera la liste de tâches à sauvegarder dans le fichier
-     * @throws IOException
+     * @author Evan et Emmanuel
+     * @param listEvent Le paramètre 'listEvent' correspond à la liste d'évènements à sauvegarder dans le fichier
+     * @throws IOException Déclenché si le fichier n'existe pas dans ce répertoire
      */
-    public void save(ListTask listTask) throws IOException {
+    public void save(ListEvent listEvent) throws IOException {
         if((file.exists())) {
             FileWriter write = new FileWriter(file, true);
-            for(int i = 0; i < listTask.size(); i++) {
-                write.append(listTask.get(i));
+            for(int i = 0; i < listEvent.size(); i++) {
+                write.append(listEvent.get(i));
                 write.append("\n");
             }
             write.close();

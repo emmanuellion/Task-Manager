@@ -1,4 +1,4 @@
-# Task.Task-Manager
+# Event.Event-Manager
 ## Description
 Ce logiciel permettra de dresser une liste de tâches à effectuer. Ces tâches seront caractérisées par : type (travail, loisir, …), nom, description, date de création (récupérer automatiquement la date du jour), date limite, importance, etc.
 

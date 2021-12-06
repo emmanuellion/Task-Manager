@@ -1,20 +1,19 @@
-import Task.TaskManager;
+import Event.EventManager;
 import Window.Window;
-import EButton.EButton;
-import javax.swing.*;
+
 import java.awt.*;
 import java.io.IOException;
-import Task.ListTask;
+import Event.ListEvent;
 import EventHandler.*;
 
 /**
- * Cette classe permet de créer d'initialiser l'application avec la première fenêtre, chargement des tâches, ...
- * @author Evan
+ * Cette classe permet de créer l'application avec l'affichage de la fenêtre d'accueil, le chargement des tâches, ...
+ * @author Emmanuel
  */
 public class Manager {
     /**
      * Cette méthode se lance automatiquement
-     * @author Evan
+     * @author Emmanuel
      * @param args
      * @throws IOException
      */
@@ -29,10 +28,10 @@ public class Manager {
         one.add(scroll,BorderLayout.EAST);
         
         new ReaderEvent().print();
-        ListTask list = new ListTask();
+        ListEvent list = new ListEvent();
         list.add("caa", "Vital", "Dormir => ronpiche", "27/10/2021", "17h", "27/10/2021", "23", "4");
         new SaveEvent().save(list);
-        TaskManager tm = new TaskManager(one);
+        EventManager tm = new EventManager(one);
         tm.go();
 
     }

@@ -1,7 +1,9 @@
 src/EButton/EButton.java
+src/Event/Parameters/Parameters.java
+src/Event/Event.java
+src/Event/EventManager.java
+src/Event/ListEvent.java
 src/EventHandler/ReaderEvent.java
 src/EventHandler/SaveEvent.java
-src/Task/ListTask.java
-src/Task/Task.java
 src/Window/Window.java
 src/Manager.java

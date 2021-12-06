@@ -13,7 +13,7 @@ public class Window extends JFrame{
     /**
      * Cette méthode permet d'instancier la fenêtre avec certaines caractéristiques
      * @author Emmanuel
-     * @param s Le paramètre 's' correspond à une chaîne de caractère spécifiant le nom de la fenêtre
+     * @param s Le paramètre 's' correspond à une chaîne de caractères spécifiant le nom de la fenêtre
      */
     public Window(String s){
         super(s);

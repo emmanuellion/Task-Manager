@@ -1,4 +1,4 @@
-package Task.Parameters;
+package Event.Parameters;
 
 import java.util.Objects;
 import java.util.Vector;
@@ -15,12 +15,15 @@ public class Parameters {
      * Instanciation du vecteur visé à contenir toutes les catégories
      */
     private static final Vector<String> listCategory = new Vector<>();
+    /**
+     * Instanciation du vecteur visé à contenir toutes les importances plausibles
+     */
     private static final Vector<String> listImportance = new Vector<>();
 
     /**
      * Cette méthode permet de stocker les catégories prisent en charge lors de l'instanciation de la classe
      * @author Emmanuel
-     * @throws FileNotFoundException
+     * @throws FileNotFoundException Déclenché si le fichier n'est pas trouvé dans le chemin indiqué
      */
     Parameters() throws FileNotFoundException {
         try (Scanner scan = new Scanner(new File("src/config.ev"))) {
@@ -60,7 +63,7 @@ public class Parameters {
     public Vector<String> getImp() {return listImportance;}
 
     /**
-     * Cette méthode permet de récupérer une catégorie à la ième place dans la liste des catégories
+     * Cette méthode permet de récupérer une catégorie à la i<i>ème</i> place dans la liste des catégories
      * @author Emmanuel
      * @param index Le paramètre 'index' correspond à l'index de la catégorie que l'on veut récupérer
      * @return Une chaîne de caractère correspondant à la catégorie
@@ -68,7 +71,7 @@ public class Parameters {
     public String getFromCat(int index){return listCategory.get(index);}
 
     /**
-     * Cette méthode permet de récupérer une importance à la ième place dans la liste des importances
+     * Cette méthode permet de récupérer une importance à la i<i>ème</i> place dans la liste des importances
      * @author Emmanuel
      * @param index Le paramètre 'index' correspond à l'index de l'importance que l'on veut récupérer
      * @return Une chaîne de caractère correspondant à l'importance

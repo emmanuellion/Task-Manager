@@ -7,7 +7,7 @@ package Window;/*
  *
  * @author Evan_Vitalis
  */
-import Task.Parameters.Parameters;
+import Event.Parameters.Parameters;
 public class test2 extends javax.swing.JFrame {
 
     /**
