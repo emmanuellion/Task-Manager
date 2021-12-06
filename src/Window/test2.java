@@ -1,4 +1,4 @@
-/*
+package Window;/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
@@ -7,6 +7,7 @@
  *
  * @author Evan_Vitalis
  */
+import Task.Parameters.Parameters;
 public class test2 extends javax.swing.JFrame {
 
     /**
@@ -239,7 +240,7 @@ public class test2 extends javax.swing.JFrame {
 
     private void definitionCat(Parameters p) {
         for(int i = 0; i<p.getCat().size(); i++) {
-            jComboBox1.add(p.get(i));
+            jComboBox1.addItem(p.getFromCat(i));
         }
     }
 
