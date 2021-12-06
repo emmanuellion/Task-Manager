@@ -15,6 +15,7 @@ public class Parameters {
      * Instanciation du vecteur visé à contenir toutes les catégories
      */
     private static final Vector<String> listCategory = new Vector<>();
+    private static final Vector<String> listImportance = new Vector<>();
 
     /**
      * Cette méthode permet de stocker les catégories prisent en charge lors de l'instanciation de la classe
@@ -23,6 +24,7 @@ public class Parameters {
      */
     Parameters() throws FileNotFoundException {
         try (Scanner scan = new Scanner(new File("src/config.ev"))) {
+            int nb_line = 0;
             while (scan.hasNextLine()) {
                 String line = scan.nextLine();
                 if (!Objects.equals(line, "")) {
@@ -31,10 +33,14 @@ public class Parameters {
                         if (!Objects.equals(car, "~")) {
                             builder.append(car);
                         } else {
-                            listCategory.add(builder.toString());
+                            if(nb_line == 0)
+                                listCategory.add(builder.toString());
+                            else if(nb_line == 1)
+                                listImportance.add(builder.toString());
                         }
                     }
                 }
+                nb_line++;
             }
         }
     }
@@ -47,10 +53,25 @@ public class Parameters {
     public Vector<String> getCat() {return listCategory;}
 
     /**
+     * Cette méthode permet d'obtenir le vecteur comprenant les importances plausibles
+     * @author Emmanuel
+     * @return Un vecteur comprenant toutes les importances plausibles
+     */
+    public Vector<String> getImp() {return listImportance;}
+
+    /**
      * Cette méthode permet de récupérer une catégorie à la ième place dans la liste des catégories
      * @author Emmanuel
      * @param index Le paramètre 'index' correspond à l'index de la catégorie que l'on veut récupérer
-     * @return Une chaîne de caractère correspondant à la catégorie 
+     * @return Une chaîne de caractère correspondant à la catégorie
      */
-    public String get(int index){return listCategory.get(index);}
+    public String getFromCat(int index){return listCategory.get(index);}
+
+    /**
+     * Cette méthode permet de récupérer une importance à la ième place dans la liste des importances
+     * @author Emmanuel
+     * @param index Le paramètre 'index' correspond à l'index de l'importance que l'on veut récupérer
+     * @return Une chaîne de caractère correspondant à l'importance
+     */
+    public String getFromImp(int index){return listImportance.get(index);}
 }
