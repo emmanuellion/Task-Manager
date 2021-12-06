@@ -60,15 +60,29 @@ public class Task {
         this.e_date = e_date;
         this.importance = importance;
     }
-    //
+
+    /**
+     * Cette méthode permet de récupérer les informations de la tâche sous sa forme de stockage
+     * @author Emmanuel
+     * @return Une chaîne de caractères correspondant à l'évènement (sous sa forme de stockage)
+     */
     public String getInfos() {
         return (title + "~" + category + "~" + description + "~" + b_date + "~" + b_hour + "~" + e_date + "~" + e_hour + "~" + importance + "~");
     }
 
+    /**
+     * Cette méthode permet de récupérer la catégorie de la tâche
+     * @author Evan
+     * @return Une chaîne de caractères correspondant à la catégorie de la tâche
+     */
     public String getCat(){
         return category;
     }
 
+    /**
+     * Cette méthode permet de récupérer l'importance de la tâche
+     * @return Une chaîne de caractères correspondant à la catégorie de la tâche
+     */
     public String getImp(){
         return importance;
     }

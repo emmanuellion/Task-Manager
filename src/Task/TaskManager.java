@@ -5,6 +5,10 @@ import Window.Window;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Cette classe permet d'afficher les tâches sauvegardées
+ * @author Emmanuel
+ */
 public class TaskManager {
     private  Window w = null;
 

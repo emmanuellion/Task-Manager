@@ -7,12 +7,19 @@ import java.io.IOException;
 import Task.ListTask;
 import EventHandler.*;
 
+/**
+ * Cette classe permet de créer d'initialiser l'application avec la première fenêtre, chargement des tâches, ...
+ * @author Evan
+ */
 public class Manager {
+    /**
+     * Cette méthode se lance automatiquement
+     * @author Evan
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
         Window one = new Window("a");
-
-
-
         Scrollbar scroll=new Scrollbar();
 		scroll.setOrientation(Scrollbar.VERTICAL);
 		scroll.setBounds(one.getContentPane().getWidth()-20,0,20,one.getContentPane().getHeight());
