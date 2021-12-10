@@ -6,4 +6,6 @@ src/Event/ListEvent.java
 src/EventHandler/ReaderEvent.java
 src/EventHandler/SaveEvent.java
 src/Window/Window.java
+src/Window/Ajout_evenement.java
+src/Window/BlocEvent.java
 src/Main/Manager.java
