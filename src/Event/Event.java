@@ -71,6 +71,15 @@ public class Event {
     }
 
     /**
+     * Cette méthode permet de récupérer le titre de l'évènement
+     * @author Evan
+     * @return Une chaîne de caractères correspondant au titre de l'évènement
+     */
+    public String getTitre() {
+        return title;
+    }
+
+    /**
      * Cette méthode permet de récupérer la catégorie de l'évènement
      * @author Evan
      * @return Une chaîne de caractères correspondant à la catégorie de l'évènement

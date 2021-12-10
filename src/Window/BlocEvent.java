@@ -1,9 +1,11 @@
 package Window;
 import javax.swing.*;
 
-public class BlocEvent {
+public class BlocEvent extends JPanel {
     private JLabel NomEvent;
-    public BlocEvent() {
-
+    public BlocEvent(Event E) {
+        super();
+        NomEvent = new JLabel(E.getTitre);
+        this.add(NomEvent);
     }
 }

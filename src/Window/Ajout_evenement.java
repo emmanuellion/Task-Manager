@@ -263,14 +263,14 @@ public class Ajout_evenement extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void definitionCat(Parameters p) {
-        jComboBox1.clear();
+        jComboBox1.removeAllElements();
         for(int i = 0; i<p.getCat().size(); i++) {
             jComboBox1.addItem(p.getFromCat(i));
         }
     }
 
     private void definitionImp(Parameters p) {
-        jComboBox2.clear();
+        jComboBox2.removeAllElements();
         for(int i = 0; i<p.getCat().size(); i++) {
             jComboBox1.addItem(p.getFromImp(i));
         }
