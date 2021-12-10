@@ -1,28 +1,30 @@
-package Window;/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+package Window;
 
-/**
- *
- * @author Evan_Vitalis
- */
-import Event.Parameters.Parameters;
 import Event.ListEvent;
-import Main.Manager;
+import Event.EventManager;
+import Event.Parameters.Parameters;
+import EventHandler.SaveEvent;
+
+import java.awt.event.ActionEvent;
+import java.io.IOException;
+import java.util.Objects;
+
 public class Ajout_evenement extends javax.swing.JFrame {
 
     /**
      * Creates new form Ajout_evenement
      */
-    public Ajout_evenement(Parameters p, Window _m) {
+    public Ajout_evenement(Parameters p, Window _m, EventManager _ev) {
         param = p;
         m = _m;
+        ev = _ev;
         _liste = m.getList();
         initComponents();
         getContentPane().setBackground(new java.awt.Color(64,63,61));
         definitionCat(param);
         definitionImp(param);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
 
@@ -79,7 +81,7 @@ public class Ajout_evenement extends javax.swing.JFrame {
         jButton3.setText("Annuler");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButton3ActionPerformed();
             }
         });
 
@@ -91,7 +93,11 @@ public class Ajout_evenement extends javax.swing.JFrame {
         jButton1.setText("Valider");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                try {
+                    jButton1ActionPerformed();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -149,7 +155,11 @@ public class Ajout_evenement extends javax.swing.JFrame {
         jButton2.setText("Ajouter");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                try {
+                    jButton2ActionPerformed(evt);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -264,19 +274,19 @@ public class Ajout_evenement extends javax.swing.JFrame {
 
     private void definitionCat(Parameters p) {
         jComboBox1.removeAllItems();
-        for(int i = 1; i<p.getCat().size(); i++) {
+        for(int i = 0; i<p.getCat().size(); i++) {
             jComboBox1.addItem(p.getFromCat(i));
         }
     }
 
     private void definitionImp(Parameters p) {
         jComboBox2.removeAllItems();
-        for(int i = 1; i<p.getCat().size(); i++) {
-            jComboBox1.addItem(p.getFromImp(i));
+        for(int i = 0; i<p.getImp().size(); i++) {
+            jComboBox2.addItem(p.getFromImp(i));
         }
     }
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButton3ActionPerformed() {
         jTextField1.setText(null);
         jComboBox1.setSelectedIndex(0);
         jComboBox2.setSelectedIndex(0);
@@ -287,14 +297,23 @@ public class Ajout_evenement extends javax.swing.JFrame {
         jFormattedTextField4.setText("");
         setVisible(false); //you can't see me!
         dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        _liste.add(jTextField1.getText(), jComboBox1.getSelectedItem().toString(), jTextArea1.getText(), jFormattedTextField1.getText(), jFormattedTextField3.getText(), jFormattedTextField2.getText(), jFormattedTextField4.getText(), jComboBox2.getSelectedItem().toString());
-        m.setList(_liste);
+    private void jButton1ActionPerformed() throws IOException {
+        _liste.add(jTextField1.getText(), Objects.requireNonNull(jComboBox1.getSelectedItem()).toString(), jTextArea1.getText(), jFormattedTextField1.getText(), jFormattedTextField3.getText(), jFormattedTextField2.getText(), jFormattedTextField4.getText(), Objects.requireNonNull(jComboBox2.getSelectedItem()).toString());
+        new SaveEvent().save(_liste);
+        m.getContentPane().removeAll();
+        m.repaint();
+        ev.go();
         setVisible(false); //you can't see me!
         dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }
+
+    private void jButton2ActionPerformed(ActionEvent evt) throws IOException {//GEN-FIRST:event_jButton2ActionPerformed
+        param.getCat().add(jTextField2.getText());
+        param.save(param.getCat());
+        definitionCat(param);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jFormattedTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField3ActionPerformed
         // TODO add your handling code here:
@@ -312,11 +331,6 @@ public class Ajout_evenement extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        param.getCat().add(jTextField2.getText());
-        definitionCat(param);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -331,6 +345,7 @@ public class Ajout_evenement extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private final Window m;
+    private final EventManager ev;
     private final Parameters param;
     private final ListEvent _liste;
     private javax.swing.JButton jButton1;

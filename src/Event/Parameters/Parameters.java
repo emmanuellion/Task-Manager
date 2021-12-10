@@ -1,5 +1,9 @@
 package Event.Parameters;
 
+import Event.ListEvent;
+
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Objects;
 import java.util.Vector;
 import java.io.File;
@@ -20,13 +24,19 @@ public class Parameters {
      */
     private static final Vector<String> listImportance = new Vector<>();
 
+    private static final File f = new File("src/config.ev");
+
     /**
      * Cette méthode permet de stocker les catégories prisent en charge lors de l'instanciation de la classe
      * @author Emmanuel
      * @throws FileNotFoundException Déclenché si le fichier n'est pas trouvé dans le chemin indiqué
      */
     public Parameters() throws FileNotFoundException {
-        try (Scanner scan = new Scanner(new File("src/config.ev"))) {
+        update();
+    }
+
+    public void update() throws FileNotFoundException {
+        try (Scanner scan = new Scanner(f)) {
             int nb_line = 0;
             while (scan.hasNextLine()) {
                 String line = scan.nextLine();
@@ -40,11 +50,26 @@ public class Parameters {
                                 listCategory.add(builder.toString());
                             else if(nb_line == 1)
                                 listImportance.add(builder.toString());
+                            builder = new StringBuilder();
                         }
                     }
                 }
                 nb_line++;
             }
+        }
+    }
+
+    public void save(Vector<String> list) throws IOException {
+        if((f.exists())) {
+            FileWriter write = new FileWriter(f, true);
+            for (String s : list) {
+                write.append(s);
+                write.append("\n");
+            }
+            write.close();
+            update();
+        } else {
+            System.out.println("Le fichier config.ev a été supprimé ou déplacé, veuillez le restaurer ou le replacer.");
         }
     }
 

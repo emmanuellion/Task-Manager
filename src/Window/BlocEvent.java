@@ -1,4 +1,6 @@
 package Window;
+import Event.Event;
+
 import javax.swing.*;
 
 public class BlocEvent extends JPanel {

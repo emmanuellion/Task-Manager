@@ -37,8 +37,4 @@ public class Window extends JFrame{
     public ListEvent getList(){
         return list;
     }
-
-    public void setList(ListEvent _list){
-        list = _list;
-    }
 }
