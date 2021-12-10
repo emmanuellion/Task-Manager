@@ -258,11 +258,11 @@ public class Ajout_evenement extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /*private void definitionCat(/Parameters p) {
+    private void definitionCat(Parameters p) {
         for(int i = 0; i<p.getCat().size(); i++) {
             jComboBox1.addItem(p.getFromCat(i));
         }
-    }*/
+    }
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         jTextField1.setText(null);
