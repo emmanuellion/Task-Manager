@@ -7,17 +7,17 @@ package Window;/*
  *
  * @author Evan_Vitalis
  */
-//import Event.Parameters.Parameters;
-//import Event.ListEVent;
+import Event.Parameters.Parameters;
+import Event.ListEvent;
 public class Ajout_evenement extends javax.swing.JFrame {
 
     /**
      * Creates new form Ajout_evenement
      */
-    public Ajout_evenement(/*ListEvent _liste*/) {
-        initComponents(/*_liste*/);
+    public Ajout_evenement(Parameters param, ListEvent _liste) {
+        initComponents();
         getContentPane().setBackground(new java.awt.Color(64,63,61));
-        //definitionCat(/*param*/);
+        definitionCat(param);
     }
 
     /**
@@ -54,7 +54,7 @@ public class Ajout_evenement extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Creation_tache");
+        setTitle("Creation_evenement");
         setBackground(new java.awt.Color(64, 63, 61));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
@@ -278,7 +278,7 @@ public class Ajout_evenement extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //_liste.add(jTextField1.getText(), jComboBox1.getSelectedItem().toString(), jTextArea1.getText(), jFormattedTextField1.getText(), jFormattedTextField3.getText(), jFormattedTextField2.getText(), jFormattedTextField4.getText(), jComboBox2.getSelectedItem().toString());
+        _liste.add(jTextField1.getText(), jComboBox1.getSelectedItem().toString(), jTextArea1.getText(), jFormattedTextField1.getText(), jFormattedTextField3.getText(), jFormattedTextField2.getText(), jFormattedTextField4.getText(), jComboBox2.getSelectedItem().toString());
         setVisible(false); //you can't see me!
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -300,20 +300,20 @@ public class Ajout_evenement extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        //param.getCat().add(jTextField2.getText());
+        param.getCat().add(jTextField2.getText());
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+   // public static void main(String args[]) {
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        /*java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Ajout_evenement().setVisible(true);
             }
         });
-    }
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
