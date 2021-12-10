@@ -5,6 +5,7 @@ import Event.EventManager;
 import Event.Parameters.Parameters;
 import EventHandler.SaveEvent;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.util.Objects;
@@ -302,8 +303,9 @@ public class Ajout_evenement extends javax.swing.JFrame {
     private void jButton1ActionPerformed() throws IOException {
         _liste.add(jTextField1.getText(), Objects.requireNonNull(jComboBox1.getSelectedItem()).toString(), jTextArea1.getText(), jFormattedTextField1.getText(), jFormattedTextField3.getText(), jFormattedTextField2.getText(), jFormattedTextField4.getText(), Objects.requireNonNull(jComboBox2.getSelectedItem()).toString());
         new SaveEvent().save(_liste);
-        m.getContentPane().removeAll();
-        m.repaint();
+        JPanel tmp = ev.getPanel();
+        tmp.removeAll();
+        ev.setPanel(tmp);
         ev.go();
         setVisible(false); //you can't see me!
         dispose();

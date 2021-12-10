@@ -4,6 +4,7 @@ import Event.EventManager;
 import Event.Parameters.Parameters;
 import Window.Ajout_evenement;
 import Window.Window;
+import EButton.EButton;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,11 +32,10 @@ public class Manager {
 		scroll.setMinimum(0);
         scroll.setVisibleAmount(30);
         one.add(scroll);
-
+        EButton openPopUpAddEvent = new EButton("Ajouter un évènement", 100, 200, 200,100,255,0,0);
+        one.add(openPopUpAddEvent);
         EventManager tm = new EventManager(one);
         tm.go();
-        JButton openPopUpAddEvent = new JButton();
-        openPopUpAddEvent.setText("Ajouter un évènement");
         openPopUpAddEvent.addActionListener(evt -> {
             try {
                 new Ajout_evenement(new Parameters(), one, tm);
