@@ -14,7 +14,9 @@ public class Ajout_evenement extends javax.swing.JFrame {
     /**
      * Creates new form Ajout_evenement
      */
-    public Ajout_evenement(Parameters param, ListEvent _liste) {
+    public Ajout_evenement(Parameters p, ListEvent l) {
+        param = p;
+        _list = l;
         initComponents();
         getContentPane().setBackground(new java.awt.Color(64,63,61));
         definitionCat(param);
@@ -316,6 +318,8 @@ public class Ajout_evenement extends javax.swing.JFrame {
     }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private Parameters param;
+    private ListEvent _liste;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
