@@ -22,6 +22,7 @@ public class Ajout_evenement extends javax.swing.JFrame {
         initComponents();
         getContentPane().setBackground(new java.awt.Color(64,63,61));
         definitionCat(param);
+        definitionImp(param);
         this.setVisible(true);
     }
 
@@ -129,8 +130,6 @@ public class Ajout_evenement extends javax.swing.JFrame {
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Description :");
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "À faire immédiatement", "Très urgent", "Urgent", "À faire" }));
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Importance :");
@@ -264,8 +263,16 @@ public class Ajout_evenement extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void definitionCat(Parameters p) {
+        jComboBox1.clear();
         for(int i = 0; i<p.getCat().size(); i++) {
             jComboBox1.addItem(p.getFromCat(i));
+        }
+    }
+
+    private void definitionImp(Parameters p) {
+        jComboBox2.clear();
+        for(int i = 0; i<p.getCat().size(); i++) {
+            jComboBox1.addItem(p.getFromImp(i));
         }
     }
 
@@ -307,6 +314,7 @@ public class Ajout_evenement extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         param.getCat().add(jTextField2.getText());
+        definitionCat(param);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
