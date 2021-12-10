@@ -22,6 +22,7 @@ public class Ajout_evenement extends javax.swing.JFrame {
         initComponents();
         getContentPane().setBackground(new java.awt.Color(64,63,61));
         definitionCat(param);
+        definitionImp(param);
         this.setVisible(true);
     }
 
