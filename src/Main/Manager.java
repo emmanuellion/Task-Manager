@@ -1,16 +1,21 @@
+package Main;
+
 import Event.EventManager;
 import Window.Window;
+import Window.Ajout_evenement;
 
 import java.awt.*;
 import java.io.IOException;
 import Event.ListEvent;
 import EventHandler.*;
+import Event.Parameters.Parameters;
 
 /**
  * Cette classe permet de créer l'application avec l'affichage de la fenêtre d'accueil, le chargement des tâches, ...
  * @author Emmanuel
  */
 public class Manager {
+    private static Window one;
     /**
      * Cette méthode se lance automatiquement
      * @author Emmanuel
@@ -18,7 +23,7 @@ public class Manager {
      * @throws IOException
      */
     public static void main(String[] args) throws IOException {
-        Window one = new Window("a");
+        one = new Window("a");
         Scrollbar scroll=new Scrollbar();
 		scroll.setOrientation(Scrollbar.VERTICAL);
 		scroll.setBounds(one.getContentPane().getWidth()-20,0,20,one.getContentPane().getHeight());
@@ -33,6 +38,7 @@ public class Manager {
         new SaveEvent().save(list);
         EventManager tm = new EventManager(one);
         tm.go();
-
+        new Ajout_evenement(new Parameters(), one);
     }
+
 }

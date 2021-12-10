@@ -25,7 +25,7 @@ public class Parameters {
      * @author Emmanuel
      * @throws FileNotFoundException Déclenché si le fichier n'est pas trouvé dans le chemin indiqué
      */
-    Parameters() throws FileNotFoundException {
+    public Parameters() throws FileNotFoundException {
         try (Scanner scan = new Scanner(new File("src/config.ev"))) {
             int nb_line = 0;
             while (scan.hasNextLine()) {

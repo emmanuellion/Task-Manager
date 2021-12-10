@@ -1,14 +1,16 @@
 package Window;
 
+import EventHandler.ReaderEvent;
+
 import javax.swing.*;
 import java.awt.*;
-
+import Event.ListEvent;
 /**
  * Cette classe permet de créer une nouvelle fenêtre avec certaines caractéristiques
  * @author Emmanuel
  */
 public class Window extends JFrame{
-    //public Map<JButton, Integer> map = new HashMap<>();
+    ListEvent list  = new ReaderEvent().get_data();
 
     /**
      * Cette méthode permet d'instancier la fenêtre avec certaines caractéristiques
@@ -31,5 +33,12 @@ public class Window extends JFrame{
         this.setLocationRelativeTo(null); //Positionne la fenêtre au centre de l'écran
         this.setVisible(true); //Affiche la fenêtre
         //addComponentListener(this);
+    }
+    public ListEvent getList(){
+        return list;
+    }
+
+    public void setList(ListEvent _list){
+        list = _list;
     }
 }

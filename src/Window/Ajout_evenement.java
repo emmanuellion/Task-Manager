@@ -9,18 +9,20 @@ package Window;/*
  */
 import Event.Parameters.Parameters;
 import Event.ListEvent;
-import Manager;
+import Main.Manager;
 public class Ajout_evenement extends javax.swing.JFrame {
 
     /**
      * Creates new form Ajout_evenement
      */
-    public Ajout_evenement(Parameters p, Manager m) {
+    public Ajout_evenement(Parameters p, Window _m) {
         param = p;
-        _liste = m.getListe();
+        m = _m;
+        _liste = m.getList();
         initComponents();
         getContentPane().setBackground(new java.awt.Color(64,63,61));
         definitionCat(param);
+        this.setVisible(true);
     }
 
     /**
@@ -282,7 +284,7 @@ public class Ajout_evenement extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         _liste.add(jTextField1.getText(), jComboBox1.getSelectedItem().toString(), jTextArea1.getText(), jFormattedTextField1.getText(), jFormattedTextField3.getText(), jFormattedTextField2.getText(), jFormattedTextField4.getText(), jComboBox2.getSelectedItem().toString());
-        m.setListe(_liste);
+        m.setList(_liste);
         setVisible(false); //you can't see me!
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -320,8 +322,9 @@ public class Ajout_evenement extends javax.swing.JFrame {
     }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Parameters param;
-    private ListEvent _liste;
+    private final Window m;
+    private final Parameters param;
+    private final ListEvent _liste;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
