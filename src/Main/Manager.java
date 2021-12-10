@@ -22,7 +22,7 @@ public class Manager {
      * @param args
      * @throws IOException
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         one = new Window("a");
         Scrollbar scroll=new Scrollbar();
 		scroll.setOrientation(Scrollbar.VERTICAL);
@@ -37,8 +37,7 @@ public class Manager {
         list.add("caa", "Vital", "Dormir => ronpiche", "27/10/2021", "17h", "27/10/2021", "23", "4");
         new SaveEvent().save(list);
         EventManager tm = new EventManager(one);
-        tm.go();
+        tm.start();
         new Ajout_evenement(new Parameters(), one);
     }
-
 }
