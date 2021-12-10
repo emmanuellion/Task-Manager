@@ -9,14 +9,15 @@ package Window;/*
  */
 import Event.Parameters.Parameters;
 import Event.ListEvent;
+import Manager;
 public class Ajout_evenement extends javax.swing.JFrame {
 
     /**
      * Creates new form Ajout_evenement
      */
-    public Ajout_evenement(Parameters p, ListEvent l) {
+    public Ajout_evenement(Parameters p, Manager m) {
         param = p;
-        _list = l;
+        _liste = m.getListe();
         initComponents();
         getContentPane().setBackground(new java.awt.Color(64,63,61));
         definitionCat(param);
@@ -281,6 +282,7 @@ public class Ajout_evenement extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         _liste.add(jTextField1.getText(), jComboBox1.getSelectedItem().toString(), jTextArea1.getText(), jFormattedTextField1.getText(), jFormattedTextField3.getText(), jFormattedTextField2.getText(), jFormattedTextField4.getText(), jComboBox2.getSelectedItem().toString());
+        m.setListe(_liste);
         setVisible(false); //you can't see me!
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
