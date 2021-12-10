@@ -264,14 +264,14 @@ public class Ajout_evenement extends javax.swing.JFrame {
 
     private void definitionCat(Parameters p) {
         jComboBox1.removeAllItems();
-        for(int i = 0; i<p.getCat().size(); i++) {
+        for(int i = 1; i<p.getCat().size(); i++) {
             jComboBox1.addItem(p.getFromCat(i));
         }
     }
 
     private void definitionImp(Parameters p) {
         jComboBox2.removeAllItems();
-        for(int i = 0; i<p.getCat().size(); i++) {
+        for(int i = 1; i<p.getCat().size(); i++) {
             jComboBox1.addItem(p.getFromImp(i));
         }
     }
