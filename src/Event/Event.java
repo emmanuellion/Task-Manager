@@ -88,9 +88,51 @@ public class Event {
         return category;
     }
 
+    /**
+     * Cette méthode permet de récupérer la description de l'évènemenet
+     * @author Evan
+     * @return Une chaîne de caractères correspondant à la description de l'évènement
+     */
     public String getDesc() {
         return description;
     }
+
+    /**
+     * Cette méthode permet de récupérer la date de début de l'évènemenet
+     * @author Evan
+     * @return Une chaîne de caractères correspondant à la date de début de l'évènement
+     */
+    public String getBDate() {
+        return b_date;
+    }
+
+    /**
+     * Cette méthode permet de récupérer l'heure de début de l'évènemenet
+     * @author Evan
+     * @return Une chaîne de caractères correspondant à l'heure de début de l'évènement
+     */
+    public String getBHour() {
+        return b_hour;
+    }
+
+    /**
+     * Cette méthode permet de récupérer la date de fin de l'évènemenet
+     * @author Evan
+     * @return Une chaîne de caractères correspondant à la date de fin de l'évènement
+     */
+    public String getEDate() {
+        return e_date;
+    }
+
+    /**
+     * Cette méthode permet de récupérer l'heure de fin de l'évènemenet
+     * @author Evan
+     * @return Une chaîne de caractères correspondant à l'heure de fin de l'évènement
+     */
+    public String getEHour() {
+        return e_hour;
+    }
+
     /**
      * Cette méthode permet de récupérer l'importance de l'évènement
      * @return Une chaîne de caractères correspondant à la catégorie de l'évènement
