@@ -88,6 +88,9 @@ public class Event {
         return category;
     }
 
+    public String getDesc() {
+        return description;
+    }
     /**
      * Cette méthode permet de récupérer l'importance de l'évènement
      * @return Une chaîne de caractères correspondant à la catégorie de l'évènement
