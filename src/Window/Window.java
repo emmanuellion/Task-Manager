@@ -34,6 +34,12 @@ public class Window extends JFrame{
         this.setVisible(true); //Affiche la fenêtre
         //addComponentListener(this);
     }
+
+    /**
+     * Cette méthode permet d'obtenir la liste des évènements chargés
+     * @author Emmanuel
+     * @return Une list correspondant au évènement chargé lors de la création de la fenêtre principale
+     */
     public ListEvent getList(){
         return list;
     }

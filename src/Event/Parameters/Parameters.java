@@ -1,7 +1,5 @@
 package Event.Parameters;
 
-import Event.ListEvent;
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Objects;
@@ -24,6 +22,9 @@ public class Parameters {
      */
     private static final Vector<String> listImportance = new Vector<>();
 
+    /**
+     * Instanciation de l'objet 'File' correspondant au fichier config.ev
+     */
     private static final File f = new File("src/config.ev");
 
     /**
@@ -35,6 +36,11 @@ public class Parameters {
         update();
     }
 
+    /**
+     * Cette méthode permet de stocker su le fichier config.ev les nouvelles catégories ainsi que de mettre à jour les données membres
+     * @author Emmanuel
+     * @throws FileNotFoundException Déclenché si le fichier n'est pas trouvé dans le chemin indiqué
+     */
     public void update() throws FileNotFoundException {
         try (Scanner scan = new Scanner(f)) {
             int nb_line = 0;
@@ -59,11 +65,17 @@ public class Parameters {
         }
     }
 
+    /**
+     * Cette méthode permet de sauvegarder dans le fichier config.ev une liste de catégorie passée en paramètre
+     * @author Emmanuel
+     * @param list Le paramètre 'list' correspond à une liste de catégorie à sauvegarder sur le fichier
+     * @throws IOException Déclenché s'il y a un problème lors de l'écriture dans le fichier congif.ev
+     */
     public void save(Vector<String> list) throws IOException {
         if((f.exists())) {
             FileWriter write = new FileWriter(f, true);
             for (String s : list) {
-                write.append(s);
+                write.write(s);
                 write.append("\n");
             }
             write.close();

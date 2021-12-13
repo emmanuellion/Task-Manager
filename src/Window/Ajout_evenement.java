@@ -306,7 +306,7 @@ public class Ajout_evenement extends javax.swing.JFrame {
         JPanel tmp = ev.getPanel();
         tmp.removeAll();
         ev.setPanel(tmp);
-        ev.go();
+        ev.refresh();
         setVisible(false); //you can't see me!
         dispose();
     }

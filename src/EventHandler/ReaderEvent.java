@@ -47,6 +47,7 @@ public class ReaderEvent {
 
     /**
      * Sortie pour débugger la classe
+     * @author Emmanuel
      */
     public void print(){
         ListEvent list = get_data();

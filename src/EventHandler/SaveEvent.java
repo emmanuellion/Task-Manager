@@ -24,7 +24,7 @@ public class SaveEvent {
         if((file.exists())) {
             FileWriter write = new FileWriter(file, true);
             for(int i = 0; i < listEvent.size(); i++) {
-                write.append(listEvent.get(i));
+                write.write(listEvent.get(i));
                 write.append("\n");
             }
             write.close();
