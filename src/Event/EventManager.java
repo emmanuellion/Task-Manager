@@ -1,6 +1,6 @@
 package Event;
 
-import Window.BlocEvent;
+import Window.*;
 import EButton.EButton;
 import EventHandler.ReaderEvent;
 import Window.Window;
@@ -36,7 +36,7 @@ public class EventManager{
         //_w.add(panel);
         _w.add(scroll);
         panelH.setLayout(new FlowLayout(panelH, FlowLayout.PAGE_AXIS));
-        panelV.setLayout(new BoxLayout(panelH, BoxLayout.PAGE_AXIS));
+        panelV.setLayout(new BoxLayout(panelV, BoxLayout.PAGE_AXIS));
     }
 
     /**
@@ -53,11 +53,26 @@ public class EventManager{
                 txt.setBounds(515, 100 + i * 50, 250, 50);
                 txt.setBackground(new Color(200, 0, 255));
                 panel.add(txt);*/
-                bloc = new BlocEvent(list.getTask(i), ((i*17)%255), ((i*64)%255), ((i*42)%255));
+                bloc = new BlocEvent(list.getTask(i), 150, 150, 150);
                 modif = new EButton("Modifier", 500, 0, 100, 500, 255, 255, 255);
                 supprim = new EButton("Supprimer", 600, 0, 100, 500, 255, 255, 255);
+                panelH.removeAll();
                 panelH.add(bloc);
                 panelH.add(modif);
+                supprim.addActionListener(evt -> {
+                    try {
+                        list.erase(list.getTask(i));
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                });
+                modif.addActionListener(evt -> {
+                    try {
+                        new Modification_evenement(new Parameters(), _w, this, list.getTask(i));
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                });
                 panelH.add(supprim);
                 panelV.add(panelH);
             }
@@ -67,10 +82,25 @@ public class EventManager{
             txt.setBounds(515, 100 + list.size() * 50, 250, 50);
             txt.setBackground(new Color(200, 0, 255));
             panel.add(txt);*/
-            bloc = new BlocEvent(list.getTask(list.size()-1),(((list.size()-1)*17)%255), (((list.size()-1)*64)%255), (((list.size()-1)*42)%255));
+            bloc = new BlocEvent(list.getTask(list.size()-1),150, 150, 150);
+            panelH.removeAll();
             panelH.add(bloc);
             panelH.add(modif);
             panelH.add(supprim);
+            supprim.addActionListener(evt -> {
+                try {
+                    list.erase(list.getTask(i));
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            });
+            modif.addActionListener(evt -> {
+                try {
+                    new Modification_evenement(new Parameters(), _w, this, list.getTask(i));
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            });
             panelV.add(panelH);
         }
         scroll  = new JScrollPane(panelV,   ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
