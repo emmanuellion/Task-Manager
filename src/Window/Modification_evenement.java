@@ -96,7 +96,11 @@ public class Modification_evenement extends javax.swing.JFrame {
         jButton1.setText("Valider");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                try {
+                    jButton1ActionPerformed(evt);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
 
@@ -154,7 +158,11 @@ public class Modification_evenement extends javax.swing.JFrame {
         jButton2.setText("Ajouter");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                try {
+                    jButton2ActionPerformed(evt);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
 
@@ -290,30 +298,30 @@ public class Modification_evenement extends javax.swing.JFrame {
     }
 
     private void defTitre() {
-        jTextField1.setText(e.getTitre);
+        jTextField1.setText(e.getTitre());
     }
 
     private void defDesc() {
-        jTextArea1.setText(e.getDesc);
+        jTextArea1.setText(e.getDesc());
     }
 
     private void defBDate() {
-        jFormattedTextField1.setText(e.getBDate);
+        jFormattedTextField1.setText(e.getBDate());
     }
 
     private void defBHour() {
-        jFormattedTextField3.setText(e.getBHour);
+        jFormattedTextField3.setText(e.getBHour());
     }
 
     private void defEDate() {
-        jFormattedTextField2.setText(e.getEDate);
+        jFormattedTextField2.setText(e.getEDate());
     }
 
     private void defEHour() {
-        jFormattedTextField4.setText(e.getEHour);
+        jFormattedTextField4.setText(e.getEHour());
     }
 
-    private void jButton3ActionPerformed() {
+    private void jButton3ActionPerformed(ActionEvent evt) {
         jTextField1.setText(null);
         jComboBox1.setSelectedIndex(0);
         jComboBox2.setSelectedIndex(0);
@@ -326,15 +334,15 @@ public class Modification_evenement extends javax.swing.JFrame {
         dispose();
     }
 
-    private void jButton1ActionPerformed() throws IOException {
+    private void jButton1ActionPerformed(ActionEvent evt) throws IOException {
         e.setTitre(jTextField1.getText());
         e.setCat(Objects.requireNonNull(jComboBox1.getSelectedItem()).toString());
         e.setImp(Objects.requireNonNull(jComboBox2.getSelectedItem()).toString());
         e.setDesc(jTextArea1.getText());
-        e.setBDate(FormattedTextField1.getText());
-        e.setBHour(FormattedTextField3.getText());
-        e.setEDate(FormattedTextField2.getText());
-        e.setEHour(FormattedTextField4.getText());
+        e.setBDate(jFormattedTextField1.getText());
+        e.setBHour(jFormattedTextField3.getText());
+        e.setEDate(jFormattedTextField2.getText());
+        e.setEHour(jFormattedTextField4.getText());
         new SaveEvent().save(_liste);
         JPanel tmp = ev.getPanel();
         tmp.removeAll();

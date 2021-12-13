@@ -3,11 +3,13 @@ import Event.Event;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
+import java.awt.*;
 
 public class BlocEvent extends JPanel {
     private JLabel TitrEvent, CatEvent, DebEvent, FinEvent, ImpEvent;
     public BlocEvent(Event E, int r, int g, int b) {
-        super(new BoxLayout()); // A corriger car on ne peut pas appeler BoxLayout() sans paramètre c.f: la classe EventManager
+        super();
+        this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         setBorder(LineBorder.createGrayLineBorder());
         setBounds(0, 0, 500, 500);
         setBackground(new Color(r, g, b));

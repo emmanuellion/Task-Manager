@@ -61,7 +61,7 @@ public class ListEvent {
      * @author Evan
      * @param index Le paramètre 'index' correspond à l'index de l'évènement à supprimer
      */
-    public void del(int index) {
+    public void erase(int index) {
         l.remove(index);
     }
 

@@ -2,11 +2,13 @@ package Event;
 
 import Window.*;
 import EButton.EButton;
+import Event.Parameters.Parameters;
 import EventHandler.ReaderEvent;
 import Window.Window;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.io.FileNotFoundException;
 
 /**
  * Cette classe permet d'afficher les évènements sauvegardés
@@ -16,6 +18,7 @@ public class EventManager{
     private JScrollPane scroll;
     private BlocEvent bloc;
     private EButton modif, supprim;
+    private Window _w;
 
     /**
      * Instanciation du JPanel contenant les JLabel correspondant aux différents évènements
@@ -30,12 +33,13 @@ public class EventManager{
 
     /**
      * Cette méthode est le constructeur de la classe 'EventManager" permettant d'ajouter le la donnée membre 'panel' à la fenêtre principale
-     * @param _w Le paramètre '_w' correspond à l'instance de la fenêtre principal
+     * @param __w Le paramètre '__w' correspond à l'instance de la fenêtre principal
      */
-    public EventManager(Window _w){
+    public EventManager(Window __w){
         //_w.add(panel);
-        _w.add(scroll);
-        panelH.setLayout(new FlowLayout(panelH, FlowLayout.PAGE_AXIS));
+        _w = __w;
+        //_w.add(scroll);
+        panelH.setLayout(new FlowLayout());
         panelV.setLayout(new BoxLayout(panelV, BoxLayout.PAGE_AXIS));
     }
 
@@ -46,7 +50,7 @@ public class EventManager{
     public void refresh(){
         System.out.println("into here");
         ListEvent list = new ReaderEvent().get_data();
-        panel.setBorder(LineBorder.createBlackLineBorder());
+        panelV.setBorder(LineBorder.createBlackLineBorder());
         if(!already_past) {
             for (int i = 0; i < list.size(); i++) {
                 /*JLabel txt = new JLabel(list.get(i));
@@ -59,16 +63,13 @@ public class EventManager{
                 panelH.removeAll();
                 panelH.add(bloc);
                 panelH.add(modif);
+                int tmp = i;
                 supprim.addActionListener(evt -> {
-                    try {
-                        list.erase(list.getTask(i));
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    }
+                    list.erase(tmp);
                 });
                 modif.addActionListener(evt -> {
                     try {
-                        new Modification_evenement(new Parameters(), _w, this, list.getTask(i));
+                        new Modification_evenement(new Parameters(), _w, this, list.getTask(tmp));
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
@@ -88,15 +89,11 @@ public class EventManager{
             panelH.add(modif);
             panelH.add(supprim);
             supprim.addActionListener(evt -> {
-                try {
-                    list.erase(list.getTask(i));
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
+                list.erase(list.size()-1);
             });
             modif.addActionListener(evt -> {
                 try {
-                    new Modification_evenement(new Parameters(), _w, this, list.getTask(i));
+                    new Modification_evenement(new Parameters(), _w, this, list.getTask(list.size()-1));
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
@@ -113,7 +110,7 @@ public class EventManager{
      * @return Un objet JPanel correspondant au JPanel affichant les évènements
      */
     public JPanel getPanel(){
-        return panel;
+        return panelV;
     }
 
     /**
@@ -121,6 +118,6 @@ public class EventManager{
      * @author Emmanuel
      */
     public void setPanel(JPanel _panel){
-        panel = _panel;
+        panelV = _panel;
     }
 }
