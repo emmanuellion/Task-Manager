@@ -100,8 +100,10 @@ public class EventManager{
             });
             panelV.add(panelH);
         }
-        scroll  = new JScrollPane(panelV,   ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        scroll.setPreferredSize(new Dimension(600, 600));
+        scroll  = new JScrollPane(panelV,   ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        scroll.setPreferredSize(new Dimension(700, 600));
+        scroll.setEnabled(true);
+        scroll.setWheelScrollingEnabled(true);
     }
 
     /**
