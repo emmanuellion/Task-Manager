@@ -1,8 +1,11 @@
 package Event;
 
+import Window.BlocEvent;
+
 import EventHandler.ReaderEvent;
 import Window.Window;
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 
 /**
@@ -10,18 +13,34 @@ import java.awt.*;
  * @author Emmanuel
 */
 public class EventManager{
-    //private JPanel panel = new JPanel(new FlowLayout());
     private JScrollPane scroll;
-    private JPanel panel = new JPanel(new BoxLayout());
     private BlocEvent bloc;
+
+    /**
+     * Instanciation du JPanel contenant les JLabel correspondant aux différents évènements
+     */
+    private JPanel panel = new JPanel();
+
+    /**
+     * Instanciation d'un booléen permettant de savoir si les tâches contenu dans le fichier de base on étaient affichés
+     */
     private boolean already_past = false;
 
+    /**
+     * Cette méthode est le constructeur de la classe 'EventManager" permettant d'ajouter le la donnée membre 'panel' à la fenêtre principale
+     * @param _w Le paramètre '_w' correspond à l'instance de la fenêtre principal
+     */
     public EventManager(Window _w){
         //_w.add(panel);
         _w.add(scroll);
+        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
     }
 
-    public void go(){
+    /**
+     * Cette méthode permet de rafraichîr l'affichage des différents évènements à afficher
+     * @author Emmmanuel
+     */
+    public void refresh(){
         System.out.println("into here");
         ListEvent list = new ReaderEvent().get_data();
         panel.setBorder(LineBorder.createBlackLineBorder());
@@ -47,10 +66,19 @@ public class EventManager{
         scroll.setPreferredSize(new Dimension(600, 600));
     }
 
+    /**
+     * Cette méthode permet d'obtenir l'objet JPanel affichant les différents évènements
+     * @author Emmanuel
+     * @return Un objet JPanel correspondant au JPanel affichant les évènements
+     */
     public JPanel getPanel(){
         return panel;
     }
 
+    /**
+     * Cette méthode permet de modifier l'objet JPanel affichant les différents évènements
+     * @author Emmanuel
+     */
     public void setPanel(JPanel _panel){
         panel = _panel;
     }

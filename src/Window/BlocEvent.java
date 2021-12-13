@@ -2,11 +2,12 @@ package Window;
 import Event.Event;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 
 public class BlocEvent extends JPanel {
     private JLabel TitrEvent, CatEvent, DebEvent, FinEvent, ImpEvent;
     public BlocEvent(Event E) {
-        super(new BoxLayout());
+        super(new BoxLayout()); // A corriger car on ne peut pas appeler BoxLayout() sans paramètre c.f: la classe EventManager
         setBorder(LineBorder.createGrayLineBorder());
         TitrEvent = new JLabel(E.getTitre());
         ImpEvent = new JLabel(E.getImp());
