@@ -1,7 +1,7 @@
 package Event;
 
 import Window.BlocEvent;
-
+import EButton.EButton;
 import EventHandler.ReaderEvent;
 import Window.Window;
 import javax.swing.*;
@@ -15,11 +15,13 @@ import java.awt.*;
 public class EventManager{
     private JScrollPane scroll;
     private BlocEvent bloc;
+    private EButton modif, supprim;
 
     /**
      * Instanciation du JPanel contenant les JLabel correspondant aux différents évènements
      */
-    private JPanel panel = new JPanel();
+    private JPanel panelV = new JPanel();
+    private JPanel panelH = new JPanel();
 
     /**
      * Instanciation d'un booléen permettant de savoir si les tâches contenu dans le fichier de base on étaient affichés
@@ -33,7 +35,8 @@ public class EventManager{
     public EventManager(Window _w){
         //_w.add(panel);
         _w.add(scroll);
-        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+        panelH.setLayout(new FlowLayout(panelH, FlowLayout.PAGE_AXIS));
+        panelV.setLayout(new BoxLayout(panelH, BoxLayout.PAGE_AXIS));
     }
 
     /**
@@ -50,8 +53,13 @@ public class EventManager{
                 txt.setBounds(515, 100 + i * 50, 250, 50);
                 txt.setBackground(new Color(200, 0, 255));
                 panel.add(txt);*/
-                bloc = new BlocEvent(list.getTask(i));
-                panel.add(bloc);
+                bloc = new BlocEvent(list.getTask(i), ((i*17)%255), ((i*64)%255), ((i*42)%255));
+                modif = new EButton("Modifier", 500, 0, 100, 500, 255, 255, 255);
+                supprim = new EButton("Supprimer", 600, 0, 100, 500, 255, 255, 255);
+                panelH.add(bloc);
+                panelH.add(modif);
+                panelH.add(supprim);
+                panelV.add(panelH);
             }
             already_past = true;
         }else{
@@ -59,10 +67,13 @@ public class EventManager{
             txt.setBounds(515, 100 + list.size() * 50, 250, 50);
             txt.setBackground(new Color(200, 0, 255));
             panel.add(txt);*/
-            bloc = new BlocEvent(list.getTask(list.size()-1));
-            panel.add(bloc);
+            bloc = new BlocEvent(list.getTask(list.size()-1),(((list.size()-1)*17)%255), (((list.size()-1)*64)%255), (((list.size()-1)*42)%255));
+            panelH.add(bloc);
+            panelH.add(modif);
+            panelH.add(supprim);
+            panelV.add(panelH);
         }
-        scroll  = new JScrollPane(panel,   ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scroll  = new JScrollPane(panelV,   ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scroll.setPreferredSize(new Dimension(600, 600));
     }
 
