@@ -39,7 +39,9 @@ public class EventManager{
      */
     public EventManager(Window __w){
         scroll = new JScrollPane(panelV, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        scroll.setPreferredSize(new Dimension(600, 600));
+        scroll.setPreferredSize(new Dimension(700, 600));
+        scroll.setEnabled(true);
+        scroll.setWheelScrollingEnabled(true);
         panelH.setLayout(new FlowLayout());
         panelV.setLayout(new BoxLayout(panelV, BoxLayout.PAGE_AXIS));
         scroll.add(panelH);
@@ -106,9 +108,6 @@ public class EventManager{
                 }
             });
             panelV.add(panelH);
-        }
-        for(Component j : panelV.getComponents()){
-            System.out.println(j);
         }
     }
 
