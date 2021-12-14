@@ -1,17 +1,17 @@
 package Event;
 
-import EventHandler.SaveEvent;
-import Window.*;
 import EButton.EButton;
 import Event.Parameters.Parameters;
 import EventHandler.ReaderEvent;
+import EventHandler.SaveEvent;
+import Window.BlocEvent;
+import Window.Modification_evenement;
 import Window.Window;
+
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Vector;
 
 /**
  * Cette classe permet d'afficher les évènements sauvegardés
@@ -35,7 +35,6 @@ public class EventManager{
      */
     public EventManager(Window __w){
         _w = __w;
-        _w.add(panelV);
     }
 
     /**
@@ -47,25 +46,20 @@ public class EventManager{
         ListEvent list = new ReaderEvent().get_data();
         panelV = new JPanel();
         panelV.setLayout(new BoxLayout(panelV, BoxLayout.PAGE_AXIS));
-        panelV.setBounds(0, 0, 700, 600);
+        panelV.setBounds(0, 0, 0, 0);
         panelV.setBorder(LineBorder.createBlackLineBorder());
         if(list.size() == 0){
             panelV.removeAll();
             panelH.removeAll();
             panelH = new JPanel(new FlowLayout());
             JLabel txt = new JLabel("Aucune tâche à afficher");
-            txt.setBounds(50, 10, 250, 50);
+            txt.setBounds(0, 0, 250, 50);
             txt.setBackground(new Color(200, 0, 0));
             panelH.add(txt);
             panelV.add(panelH);
         }else {
             for (int i = 0; i < list.size(); i++) {
                 panelH = new JPanel(new FlowLayout());
-                //panelH.setBounds(0, 0, 500, 500);
-               /* JLabel txt = new JLabel(list.get(i));
-                txt.setBounds(50, i*10, 250, 50);
-                txt.setBackground(new Color(200, 0, 0));
-                panelH.add(txt);*/
                 bloc = new BlocEvent(list.getTask(i), i * 10, 150, 150, 150);
                 modif = new EButton("Modifier", 0, 0, 100, 100, 255, 255, 255).get();
                 supprim = new EButton("Supprimer", 0, 0, 100, 100, 255, 255, 255).get();
@@ -75,7 +69,7 @@ public class EventManager{
                 int tmp = i;
                 modif.addActionListener(evt -> {
                     try {
-                        new Modification_evenement(new Parameters(), _w, this, list.getTask(tmp), bloc);
+                        new Modification_evenement(new Parameters(), _w, this, tmp, bloc);
                         new SaveEvent().save(list);
                         refresh();
                     } catch (IOException e) {

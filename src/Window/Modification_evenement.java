@@ -294,7 +294,7 @@ public class Modification_evenement extends javax.swing.JFrame {
         for(int i = 0; i<p.getCat().size(); i++) {
             jComboBox1.addItem(p.getFromCat(i));
         }
-        jComboBox1.setSelectedItem(e.getCat());
+        jComboBox1.setSelectedItem(_liste.getTask(index).getCat());
     }
 
     private void definitionImp(Parameters p) {
@@ -302,31 +302,31 @@ public class Modification_evenement extends javax.swing.JFrame {
         for(int i = 0; i<p.getImp().size(); i++) {
             jComboBox2.addItem(p.getFromImp(i));
         }
-        jComboBox2.setSelectedItem(e.getImp());
+        jComboBox2.setSelectedItem(_liste.getTask(index).getImp());
     }
 
     private void defTitre() {
-        jTextField1.setText(e.getTitre());
+        jTextField1.setText(_liste.getTask(index).getTitre());
     }
 
     private void defDesc() {
-        jTextArea1.setText(e.getDesc());
+        jTextArea1.setText(_liste.getTask(index).getDesc());
     }
 
     private void defBDate() {
-        jFormattedTextField1.setText(e.getBDate());
+        jFormattedTextField1.setText(_liste.getTask(index).getBDate());
     }
 
     private void defBHour() {
-        jFormattedTextField3.setText(e.getBHour());
+        jFormattedTextField3.setText(_liste.getTask(index).getBHour());
     }
 
     private void defEDate() {
-        jFormattedTextField2.setText(e.getEDate());
+        jFormattedTextField2.setText(_liste.getTask(index).getEDate());
     }
 
     private void defEHour() {
-        jFormattedTextField4.setText(e.getEHour());
+        jFormattedTextField4.setText(_liste.getTask(index).getEHour());
     }
 
     private void jButton3ActionPerformed(ActionEvent evt) {

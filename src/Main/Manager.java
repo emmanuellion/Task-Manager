@@ -29,7 +29,7 @@ public class Manager {
 		scroll.setMinimum(0);
         scroll.setVisibleAmount(30);
         one.add(scroll);*/
-        EButton openPopUpAddEvent = new EButton("Ajouter un évènement", 100, 200, 100,200,255,255,255);
+        EButton openPopUpAddEvent = new EButton("Ajouter un évènement", 540, 240, 200,100,255,255,255);
         JButton but = openPopUpAddEvent.get();
         one.add(but);
         EventManager tm = new EventManager(one);
