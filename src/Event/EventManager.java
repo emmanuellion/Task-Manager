@@ -18,16 +18,26 @@ import java.io.IOException;
  * @author Emmanuel
 */
 public class EventManager{
-    private JPanel panelV = new JPanel();
-    private JPanel panelH = new JPanel();
-    private BlocEvent bloc;
-    private JButton modif, supprim;
-    private Window _w;
 
     /**
-     * Instanciation du JPanel contenant les JLabel correspondant aux différents évènements
+     * Instanciation du JPanel correspondant à la pile d'évènements à afficher
      */
+    private JPanel panelV = new JPanel();
 
+    /**
+     * Instanciation du JPanel alignant l'évènement, le bouton pour supprimer et celui pour modifier l'évènement
+     */
+    private JPanel panelH = new JPanel();
+
+    /**
+     * Instanciation de l'objet 'BlocEvent' affichant la tâche et ses caractéristiques
+     */
+    private BlocEvent bloc;
+
+    /**
+     * Instanciation de la fenêtre affichant les évènements
+     */
+    private final Window _w;
 
     /**
      * Cette méthode est le constructeur de la classe 'EventManager" permettant d'ajouter le la donnée membre 'panel' à la fenêtre principale
@@ -61,8 +71,8 @@ public class EventManager{
             for (int i = 0; i < list.size(); i++) {
                 panelH = new JPanel(new FlowLayout());
                 bloc = new BlocEvent(list.getTask(i), i * 10, 150, 150, 150);
-                modif = new EButton("Modifier", 0, 0, 100, 100, 255, 255, 255).get();
-                supprim = new EButton("Supprimer", 0, 0, 100, 100, 255, 255, 255).get();
+                JButton modif = new EButton("Modifier", 0, 0, 100, 100, 255, 255, 255).get();
+                JButton supprim = new EButton("Supprimer", 0, 0, 100, 100, 255, 255, 255).get();
                 panelH.add(bloc);
                 panelH.add(modif);
                 panelH.add(supprim);

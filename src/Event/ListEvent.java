@@ -8,11 +8,11 @@ import java.lang.*;
  * @author Evan
  */
 public class ListEvent {
+
     /**
      * Instanciation du vecteur visant à contenir toutes les évènements
      */
     private Vector<Event> l = new Vector<>(0);
-    //static private final Calendar annee = new GregorianCalendar();
 
     /**
      * Cette méthode permet de récupérer le contenu d'un évènements à la i<i>ème</i> position dans le tableau des évènements
@@ -63,10 +63,6 @@ public class ListEvent {
      */
     public void erase(int index) {
         l.remove(index);
-    }
-
-    public int getLastIndex(){
-        return l.size()-1;
     }
 
     /**
