@@ -65,6 +65,10 @@ public class ListEvent {
         l.remove(index);
     }
 
+    public int getLastIndex(){
+        return l.size()-1;
+    }
+
     /**
      * Cette méthode permet de retourner une liste trié en fonction des paramètres renseignés
      * @author Emmanuel

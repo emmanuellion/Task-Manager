@@ -32,7 +32,8 @@ public class Window extends JFrame{
         this.setLayout(new FlowLayout());
         this.setLocationRelativeTo(null); //Positionne la fenêtre au centre de l'écran
         this.setVisible(true); //Affiche la fenêtre
-        //addComponentListener(this);
+        this.setBackground(new Color(64,63,61));
+        this.setBackground(new java.awt.Color(64, 63, 61));
     }
 
     /**

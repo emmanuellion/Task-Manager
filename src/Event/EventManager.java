@@ -1,5 +1,6 @@
 package Event;
 
+import EventHandler.SaveEvent;
 import Window.*;
 import EButton.EButton;
 import Event.Parameters.Parameters;
@@ -9,6 +10,7 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Vector;
 
 /**
@@ -22,6 +24,7 @@ public class EventManager{
     private BlocEvent bloc;
     private EButton modif, supprim;
     private Window _w;
+    private Vector<JPanel> save = new Vector<>();
 
     /**
      * Instanciation du JPanel contenant les JLabel correspondant aux différents évènements
@@ -44,11 +47,13 @@ public class EventManager{
         scroll.setWheelScrollingEnabled(true);
         panelH.setLayout(new FlowLayout());
         panelV.setLayout(new BoxLayout(panelV, BoxLayout.PAGE_AXIS));
-        scroll.add(panelH);
-        scroll.add(panelV);
-        scroll.setBounds(100, 100, 100, 100);
+        panelV.setBounds(0, 0, 700, 600);
+        //scroll.add(panelH);
+        //scroll.add(panelV);
+        scroll.setBounds(100, 100, 700, 600);
         _w = __w;
-        _w.add(scroll);
+        _w.add(panelV);
+        //_w.add(scroll);
     }
 
     /**
@@ -61,18 +66,18 @@ public class EventManager{
         panelV.setBorder(LineBorder.createBlackLineBorder());
         if(!already_past) {
             for (int i = 0; i < list.size(); i++) {
-                /*JLabel txt = new JLabel(list.get(i));
-                txt.setBounds(515, 100 + i * 50, 250, 50);
-                txt.setBackground(new Color(200, 0, 255));
-                panel.add(txt);*/
-                bloc = new BlocEvent(list.getTask(i), 150, 150, 150);
-                modif = new EButton("Modifier", 500, 0, 100, 500, 255, 255, 255);
-                supprim = new EButton("Supprimer", 600, 0, 100, 500, 255, 255, 255);
                 panelH = new JPanel(new FlowLayout());
-                panelH.setBounds(100, 100, 500, 500);
-                panelH.add(bloc);
-                panelH.add(modif);
-                panelH.add(supprim);
+                //panelH.setBounds(0, 0, 500, 500);
+                JLabel txt = new JLabel(list.get(i));
+                txt.setBounds(50, i*10, 250, 50);
+                txt.setBackground(new Color(200, 0, 0));
+                panelH.add(txt);
+                //bloc = new BlocEvent(list.getTask(i), 150, 150, 150);
+                modif = new EButton("Modifier", 0, 0, 100, 100, 255, 255, 255);
+                supprim = new EButton("Supprimer", 0, 0, 100, 100, 255, 255, 255);
+                //panelH.add(bloc);
+                panelH.add(modif.get());
+                panelH.add(supprim.get());
                 int tmp = i;
                 modif.addActionListener(evt -> {
                     try {
@@ -83,32 +88,47 @@ public class EventManager{
                 });
                 supprim.addActionListener(evt -> {
                     list.erase(tmp);
+                    try {
+                        new SaveEvent().save(list);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 });
                 panelV.add(panelH);
             }
             already_past = true;
         }else{
-            /*JLabel txt = new JLabel(list.get(list.size()-1));
-            txt.setBounds(515, 100 + list.size() * 50, 250, 50);
-            txt.setBackground(new Color(200, 0, 255));
-            panel.add(txt);*/
-            bloc = new BlocEvent(list.getTask(list.size()-1),150, 150, 150);
-            panelH.removeAll();
-            panelH.add(bloc);
+            panelH = new JPanel(new FlowLayout());
+            //panelH.setBounds(0, 0, 500, 500);
+            JLabel txt = new JLabel(list.get(list.size()-1));
+            txt.setBounds(50, list.getLastIndex()*10, 250, 50);
+            txt.setBackground(new Color(200, 0, 0));
+            panelH.add(txt);
+            //bloc = new BlocEvent(list.getTask(i), 150, 150, 150);
+            modif = new EButton("Modifier", 0, 0, 100, 100, 255, 255, 255);
+            supprim = new EButton("Supprimer", 0, 0, 100, 100, 255, 255, 255);
+            //panelH.add(bloc);
             panelH.add(modif);
             panelH.add(supprim);
-            supprim.addActionListener(evt -> {
-                list.erase(list.size()-1);
-            });
+            int tmp = list.getLastIndex();
             modif.addActionListener(evt -> {
                 try {
-                    new Modification_evenement(new Parameters(), _w, this, list.getTask(list.size()-1));
+                    new Modification_evenement(new Parameters(), _w, this, list.getTask(tmp));
                 } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            });
+            supprim.addActionListener(evt -> {
+                list.erase(tmp);
+                try {
+                    new SaveEvent().save(list);
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             });
             panelV.add(panelH);
         }
+        _w.pack();
     }
 
     /**
