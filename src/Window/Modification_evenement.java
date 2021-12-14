@@ -4,6 +4,7 @@ import Event.ListEvent;
 import Event.Event;
 import Event.EventManager;
 import Event.Parameters.Parameters;
+import EventHandler.ReaderEvent;
 import EventHandler.SaveEvent;
 
 import javax.swing.*;
@@ -22,7 +23,7 @@ public class Modification_evenement extends javax.swing.JFrame {
         ev = _ev;
         e = _e;
         be = _be;
-        _liste = m.getList();
+        _liste = new ReaderEvent().get_data();
         initComponents();
         getContentPane().setBackground(new java.awt.Color(64,63,61));
         definitionCat(param);
@@ -64,6 +65,13 @@ public class Modification_evenement extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
+
+        defTitre();
+        defBDate();
+        defBHour();
+        defDesc();
+        defEDate();
+        defEHour();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Creation_evenement");

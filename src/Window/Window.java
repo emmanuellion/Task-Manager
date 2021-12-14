@@ -19,7 +19,7 @@ public class Window extends JFrame{
      */
     public Window(String s){
         super(s);
-
+        this.getContentPane().setBackground(new Color(64,63,61));
         //Dispose toutes les ressources de la fenêtre, si la dernière est disposé l'application s'arrête
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
@@ -33,8 +33,6 @@ public class Window extends JFrame{
         this.setLayout(new FlowLayout());
         this.setLocationRelativeTo(null); //Positionne la fenêtre au centre de l'écran
         this.setVisible(true); //Affiche la fenêtre
-        this.setBackground(new Color(64,63,61));
-        this.setBackground(new java.awt.Color(64, 63, 61));
     }
 
     /**

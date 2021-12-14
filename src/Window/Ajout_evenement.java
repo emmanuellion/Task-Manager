@@ -3,6 +3,7 @@ package Window;
 import Event.ListEvent;
 import Event.EventManager;
 import Event.Parameters.Parameters;
+import EventHandler.ReaderEvent;
 import EventHandler.SaveEvent;
 
 import javax.swing.*;
@@ -19,7 +20,7 @@ public class Ajout_evenement extends javax.swing.JFrame {
         param = p;
         m = _m;
         ev = _ev;
-        _liste = m.getList();
+        _liste = new ReaderEvent().get_data();
         initComponents();
         getContentPane().setBackground(new java.awt.Color(64,63,61));
         definitionCat(param);

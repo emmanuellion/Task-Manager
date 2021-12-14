@@ -21,7 +21,7 @@ public class Manager {
      * @author Emmanuel
      */
     public static void main(String[] args) {
-        one = new Window("a");
+        one = new Window("Event Manager");
         /*Scrollbar scroll=new Scrollbar();
 		scroll.setOrientation(Scrollbar.VERTICAL);
 		scroll.setBounds(one.getContentPane().getWidth()-20,0,20,one.getContentPane().getHeight());
