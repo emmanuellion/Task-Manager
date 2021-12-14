@@ -273,21 +273,33 @@ public class Ajout_evenement extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Ajoute dans l'élément jComboBox1 la liste des catégories des évènements et met le curseur sur la catégorie de l'évènement
+     * @param p Paramètre de type Parameters contenant les catégories et importances
+     * @author Evan
+     */
     private void definitionCat(Parameters p) {
         jComboBox1.removeAllItems();
         for(int i = 0; i<p.getCat().size(); i++) {
             jComboBox1.addItem(p.getFromCat(i));
         }
     }
-
+    /**
+     * Ajoute dans l'élément jComboBox1 la liste des importances des évènements
+     * @param p Paramètre de type Parameters contenant les catégories et importances
+     * @author Evan
+     */
     private void definitionImp(Parameters p) {
         jComboBox2.removeAllItems();
         for(int i = 0; i<p.getImp().size(); i++) {
             jComboBox2.addItem(p.getFromImp(i));
         }
     }
-
+    /**
+     * Ferme la fenêtre quand le bouton "Annuler" est cliqué
+     * @param evt Évènement invoqué quand jButton3 cliqué
+     * @author Evan
+     */
     private void jButton3ActionPerformed() {
         jTextField1.setText(null);
         jComboBox1.setSelectedIndex(0);
@@ -300,7 +312,10 @@ public class Ajout_evenement extends javax.swing.JFrame {
         setVisible(false); //you can't see me!
         dispose();
     }
-
+    /**
+     * Ajoute dans la ListEvent ajoutée en paramètre l'évènement créé par cette fenêtre (grâce à la saisie des informations contenues dans différents éléments de la fenêtre). La liste sera ensuite sauvegardée et rechargée
+     * @throws IOException
+     */
     private void jButton1ActionPerformed() throws IOException {
         _liste.add(jTextField1.getText(), Objects.requireNonNull(jComboBox1.getSelectedItem()).toString(), jTextArea1.getText(), jFormattedTextField1.getText(), jFormattedTextField3.getText(), jFormattedTextField2.getText(), jFormattedTextField4.getText(), Objects.requireNonNull(jComboBox2.getSelectedItem()).toString());
         new SaveEvent().save(_liste);
@@ -311,7 +326,12 @@ public class Ajout_evenement extends javax.swing.JFrame {
         setVisible(false); //you can't see me!
         dispose();
     }
-
+    /**
+     * Ajoute une catégorie dans l'instance de Parameters, afin que cette catégorie soit sélectionnable à l'avenir pour les autres évènements
+     * @param evt Évènement invoqué quand jButton2 cliqué
+     * @throws IOException
+     * @author Evan
+     */
     private void jButton2ActionPerformed(ActionEvent evt) throws IOException {//GEN-FIRST:event_jButton2ActionPerformed
         param.getCat().add(jTextField2.getText());
         param.save(param.getCat());
@@ -348,31 +368,109 @@ public class Ajout_evenement extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private final Window m;
+    /**
+     * EventManager à refresh après l'ajout d'un nouvel évènement
+     */
     private final EventManager ev;
+    /**
+     * Liste des catégories et importance permettant de remplir les deux JComboBox et pouvant acceuillir une nouvelle catégorie définie par l'utilsateur 
+     */
     private final Parameters param;
+    /**
+     * Liste des évènements dans laquelle on va insérer notre nouvel évènement
+     */
     private final ListEvent _liste;
+    /**
+     * Bouton "Valider"
+     */
     private javax.swing.JButton jButton1;
+    /**
+     * Bouton "Ajouter" servant à ajouter une catégorie
+     */
     private javax.swing.JButton jButton2;
+    /**
+     * Bouton "Annuler"
+     */
     private javax.swing.JButton jButton3;
+    /**
+     * Liste des catégories
+     */
     private javax.swing.JComboBox<String> jComboBox1;
+    /**
+     * Liste des importances
+     */
     private javax.swing.JComboBox<String> jComboBox2;
+    /**
+     * Boite dans laquelle on va saisir la date de début (formaté pour correspondre au format de la date jj/mm/aaaa)
+     */
     private javax.swing.JFormattedTextField jFormattedTextField1;
+    /**
+     * Boite dans laquelle on va saisir la date de fin (formaté pour correspondre au format de la date jj/mm/aaaa)
+     */
     private javax.swing.JFormattedTextField jFormattedTextField2;
+    /**
+     * Boite dans laquelle on va saisir l'heure de début (formaté pour correspondre au format de l'heure hh:mm)
+     */
     private javax.swing.JFormattedTextField jFormattedTextField3;
+    /**
+     * Boite dans laquelle on va saisir l'heure de fin (formaté pour correspondre au format de l'heure hh:mm)
+     */
     private javax.swing.JFormattedTextField jFormattedTextField4;
+    /**
+     * Titre principal
+     */
     private javax.swing.JLabel jLabel1;
+    /**
+     * Label indiquant textuellement dans quel champ saisir une nouvelle catégorie
+     */
     private javax.swing.JLabel jLabel10;
+    /**
+     * Label indiquant textuellement dans quel champ saisir le titre de l'évènement
+     */
     private javax.swing.JLabel jLabel2;
+    /**
+     * Label indiquant textuellement dans quel champ saisir la catégorie de l'évènement
+     */
     private javax.swing.JLabel jLabel3;
+    /**
+     * Label indiquant textuellement dans quel champ saisir la description de l'évènement
+     */
     private javax.swing.JLabel jLabel4;
+    /**
+     * Label indiquant textuellement dans quel champ saisir l'importance de l'évènement
+     */
     private javax.swing.JLabel jLabel5;
+    /**
+     * Label indiquant textuellement dans quel champ saisir la date de début de l'évènement
+     */
     private javax.swing.JLabel jLabel6;
+    /**
+     * Label indiquant textuellement dans quel champ saisir la date de fin de l'évènement
+     */
     private javax.swing.JLabel jLabel7;
+    /**
+     * Label indiquant textuellement dans quel champ saisir l'heure de début de l'évènement
+     */
     private javax.swing.JLabel jLabel8;
+    /**
+     * Label indiquant textuellement dans quel champ saisir l'heure de fin de l'évènement
+     */
     private javax.swing.JLabel jLabel9;
+    /**
+     * Barre permettant de voir le contenu du JTextArea
+     */
     private javax.swing.JScrollPane jScrollPane1;
+    /**
+     * Champ dans laquelle on écrit la description de l'évènement
+     */
     private javax.swing.JTextArea jTextArea1;
+    /**
+     * Champ dans lequel on saisit le titre de l'évènement
+     */
     private javax.swing.JTextField jTextField1;
+    /**
+     * Champ dans lequel on saisit la nouvelle catégorie à ajouter
+     */
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
