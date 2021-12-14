@@ -8,6 +8,7 @@ import Event.ListEvent;
  * @author Evan et Emmanuel
  */
 public class SaveEvent {
+
     /**
      * Instanciation du fichier où sont stockés les évènements
      */

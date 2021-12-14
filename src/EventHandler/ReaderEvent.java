@@ -9,6 +9,7 @@ import Event.ListEvent;
  * @author Evan et Emmanuel
  */
 public class ReaderEvent {
+
     /**
      * Instanciation du fichier où sont stockés les évènements
      */

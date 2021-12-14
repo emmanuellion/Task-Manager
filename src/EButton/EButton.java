@@ -16,6 +16,7 @@ public class EButton extends JButton {
 
     /**
      * Cette méthode permet d'instancier un nouveau JButton tout en lui fournissant diverses caractéristiques
+     * @author Emmanuel
      * @param value Le paramètre 'value' correspond au texte qui sera présent dans le bouton
      * @param x Le paramètre 'x' correspond à un point sur l'axe horizontal afin de placer le bouton
      * @param y Le paramètre 'y' correspond à une point sur l'axe vertical afin de placer le bouton
@@ -31,6 +32,11 @@ public class EButton extends JButton {
         dis.setBackground(new Color(bg_r, bg_g, bg_b));
     }
 
+    /**
+     * Cette méthode permet d'obtenir l'instance du JButton créé
+     * @author Emmanuel
+     * @return Un JButton correspondant à l'instance courante
+     */
     public JButton get(){
         return dis;
     }
