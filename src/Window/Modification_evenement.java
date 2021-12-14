@@ -25,6 +25,12 @@ public class Modification_evenement extends javax.swing.JFrame {
         be = _be;
         _liste = new ReaderEvent().get_data();
         initComponents();
+        defTitre();
+        defBDate();
+        defBHour();
+        defDesc();
+        defEDate();
+        defEHour();
         getContentPane().setBackground(new java.awt.Color(64,63,61));
         definitionCat(param);
         definitionImp(param);
@@ -65,13 +71,6 @@ public class Modification_evenement extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-
-        defTitre();
-        defBDate();
-        defBHour();
-        defDesc();
-        defEDate();
-        defEHour();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Creation_evenement");
