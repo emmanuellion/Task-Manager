@@ -9,7 +9,7 @@ public class BlocEvent extends JPanel {
     private JLabel TitrEvent, CatEvent, DebEvent, FinEvent, ImpEvent;
     public BlocEvent(Event E, int r, int g, int b) {
         super();
-        this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+        setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         setBorder(LineBorder.createGrayLineBorder());
         setBounds(0, 0, 500, 500);
         setBackground(new Color(r, g, b));

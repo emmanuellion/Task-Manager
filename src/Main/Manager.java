@@ -6,6 +6,8 @@ import Event.Parameters.Parameters;
 import Window.Ajout_evenement;
 import Window.Window;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.FileNotFoundException;
 
 /**
@@ -27,11 +29,12 @@ public class Manager {
 		scroll.setMinimum(0);
         scroll.setVisibleAmount(30);
         one.add(scroll);*/
-        EButton openPopUpAddEvent = new EButton("Ajouter un évènement", 100, 200, 200,100,255,0,0);
-        one.add(openPopUpAddEvent);
+        EButton openPopUpAddEvent = new EButton("Ajouter un évènement", 100, 200, 100,200,64,63,61);
+        JButton but = openPopUpAddEvent.get();
+        one.add(but);
         EventManager tm = new EventManager(one);
         tm.refresh();
-        openPopUpAddEvent.addActionListener(evt -> {
+        but.addActionListener(evt -> {
             try {
                 new Ajout_evenement(new Parameters(), one, tm);
             } catch (FileNotFoundException e) {

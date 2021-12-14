@@ -13,14 +13,16 @@ import java.util.Scanner;
  * @author Emmanuel
  */
 public class Parameters {
+
     /**
      * Instanciation du vecteur visé à contenir toutes les catégories
      */
-    private static final Vector<String> listCategory = new Vector<>();
+    private static Vector<String> listCategory = new Vector<>();
+
     /**
      * Instanciation du vecteur visé à contenir toutes les importances plausibles
      */
-    private static final Vector<String> listImportance = new Vector<>();
+    private static Vector<String> listImportance = new Vector<>();
 
     /**
      * Instanciation de l'objet 'File' correspondant au fichier config.ev
@@ -44,6 +46,8 @@ public class Parameters {
     public void update() throws FileNotFoundException {
         try (Scanner scan = new Scanner(f)) {
             int nb_line = 0;
+            listCategory = new Vector<String>();
+            listImportance = new Vector<String>();
             while (scan.hasNextLine()) {
                 String line = scan.nextLine();
                 if (!Objects.equals(line, "")) {
@@ -73,10 +77,15 @@ public class Parameters {
      */
     public void save(Vector<String> list) throws IOException {
         if((f.exists())) {
-            FileWriter write = new FileWriter(f, true);
+            FileWriter write = new FileWriter(f, false);
             for (String s : list) {
                 write.write(s);
-                write.append("\n");
+                write.append("~");
+            }
+            write.append("\n");
+            for(String z : listImportance){
+                write.write(z);
+                write.append("~");
             }
             write.close();
             update();

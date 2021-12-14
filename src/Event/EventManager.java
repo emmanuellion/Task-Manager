@@ -9,6 +9,7 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.io.FileNotFoundException;
+import java.util.Vector;
 
 /**
  * Cette classe permet d'afficher les évènements sauvegardés
@@ -16,6 +17,8 @@ import java.io.FileNotFoundException;
 */
 public class EventManager{
     private JScrollPane scroll;
+    private JPanel panelV = new JPanel();
+    private JPanel panelH = new JPanel();
     private BlocEvent bloc;
     private EButton modif, supprim;
     private Window _w;
@@ -23,8 +26,7 @@ public class EventManager{
     /**
      * Instanciation du JPanel contenant les JLabel correspondant aux différents évènements
      */
-    private JPanel panelV = new JPanel();
-    private JPanel panelH = new JPanel();
+
 
     /**
      * Instanciation d'un booléen permettant de savoir si les tâches contenu dans le fichier de base on étaient affichés
@@ -36,11 +38,15 @@ public class EventManager{
      * @param __w Le paramètre '__w' correspond à l'instance de la fenêtre principal
      */
     public EventManager(Window __w){
-        //_w.add(panel);
-        _w = __w;
-        //_w.add(scroll);
+        scroll = new JScrollPane(panelV, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scroll.setPreferredSize(new Dimension(600, 600));
         panelH.setLayout(new FlowLayout());
         panelV.setLayout(new BoxLayout(panelV, BoxLayout.PAGE_AXIS));
+        scroll.add(panelH);
+        scroll.add(panelV);
+        scroll.setBounds(100, 100, 100, 100);
+        _w = __w;
+        _w.add(scroll);
     }
 
     /**
@@ -48,7 +54,7 @@ public class EventManager{
      * @author Emmmanuel
      */
     public void refresh(){
-        System.out.println("into here");
+        System.out.println("===");
         ListEvent list = new ReaderEvent().get_data();
         panelV.setBorder(LineBorder.createBlackLineBorder());
         if(!already_past) {
@@ -60,13 +66,12 @@ public class EventManager{
                 bloc = new BlocEvent(list.getTask(i), 150, 150, 150);
                 modif = new EButton("Modifier", 500, 0, 100, 500, 255, 255, 255);
                 supprim = new EButton("Supprimer", 600, 0, 100, 500, 255, 255, 255);
-                panelH.removeAll();
+                panelH = new JPanel(new FlowLayout());
+                panelH.setBounds(100, 100, 500, 500);
                 panelH.add(bloc);
                 panelH.add(modif);
+                panelH.add(supprim);
                 int tmp = i;
-                supprim.addActionListener(evt -> {
-                    list.erase(tmp);
-                });
                 modif.addActionListener(evt -> {
                     try {
                         new Modification_evenement(new Parameters(), _w, this, list.getTask(tmp));
@@ -74,7 +79,9 @@ public class EventManager{
                         e.printStackTrace();
                     }
                 });
-                panelH.add(supprim);
+                supprim.addActionListener(evt -> {
+                    list.erase(tmp);
+                });
                 panelV.add(panelH);
             }
             already_past = true;
@@ -100,8 +107,9 @@ public class EventManager{
             });
             panelV.add(panelH);
         }
-        scroll  = new JScrollPane(panelV,   ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        scroll.setPreferredSize(new Dimension(600, 600));
+        for(Component j : panelV.getComponents()){
+            System.out.println(j);
+        }
     }
 
     /**

@@ -30,4 +30,8 @@ public class EButton extends JButton {
         dis.setBounds(x, y, width, height);
         dis.setBackground(new Color(bg_r, bg_g, bg_b));
     }
+
+    public JButton get(){
+        return dis;
+    }
 }

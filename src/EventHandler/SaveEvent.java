@@ -22,7 +22,7 @@ public class SaveEvent {
      */
     public void save(ListEvent listEvent) throws IOException {
         if((file.exists())) {
-            FileWriter write = new FileWriter(file, true);
+            FileWriter write = new FileWriter(file, false);
             for(int i = 0; i < listEvent.size(); i++) {
                 write.write(listEvent.get(i));
                 write.append("\n");
