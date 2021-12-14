@@ -17,11 +17,11 @@ public class Modification_evenement extends javax.swing.JFrame {
     /**
      * Creates new form Modification_evenement
      */
-    public Modification_evenement(Parameters p, Window _m, EventManager _ev, Event _e, BlocEvent _be) {
+    public Modification_evenement(Parameters p, Window _m, EventManager _ev, int _index, BlocEvent _be) {
         param = p;
         m = _m;
         ev = _ev;
-        e = _e;
+        index = _index;
         be = _be;
         _liste = new ReaderEvent().get_data();
         initComponents();
@@ -343,14 +343,14 @@ public class Modification_evenement extends javax.swing.JFrame {
     }
 
     private void jButton1ActionPerformed(ActionEvent evt) throws IOException {
-        e.setTitre(jTextField1.getText());
-        e.setCat(Objects.requireNonNull(jComboBox1.getSelectedItem()).toString());
-        e.setImp(Objects.requireNonNull(jComboBox2.getSelectedItem()).toString());
-        e.setDesc(jTextArea1.getText());
-        e.setBDate(jFormattedTextField1.getText());
-        e.setBHour(jFormattedTextField3.getText());
-        e.setEDate(jFormattedTextField2.getText());
-        e.setEHour(jFormattedTextField4.getText());
+        _liste.getTask(index).setTitre(jTextField1.getText());
+        _liste.getTask(index).setCat(Objects.requireNonNull(jComboBox1.getSelectedItem()).toString());
+        _liste.getTask(index).setImp(Objects.requireNonNull(jComboBox2.getSelectedItem()).toString());
+        _liste.getTask(index).setDesc(jTextArea1.getText());
+        _liste.getTask(index).setBDate(jFormattedTextField1.getText());
+        _liste.getTask(index).setBHour(jFormattedTextField3.getText());
+        _liste.getTask(index).setEDate(jFormattedTextField2.getText());
+        _liste.getTask(index).setEHour(jFormattedTextField4.getText());
         be.setTitr(jTextField1.getText());
         be.setCat(Objects.requireNonNull(jComboBox1.getSelectedItem()).toString());
         be.setImp(Objects.requireNonNull(jComboBox2.getSelectedItem()).toString());
@@ -405,7 +405,7 @@ public class Modification_evenement extends javax.swing.JFrame {
     private final EventManager ev;
     private final Parameters param;
     private final ListEvent _liste;
-    private Event e;
+    private int index;
     private BlocEvent be;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
