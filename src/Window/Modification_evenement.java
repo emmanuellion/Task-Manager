@@ -16,11 +16,12 @@ public class Modification_evenement extends javax.swing.JFrame {
     /**
      * Creates new form Modification_evenement
      */
-    public Modification_evenement(Parameters p, Window _m, EventManager _ev, Event _e) {
+    public Modification_evenement(Parameters p, Window _m, EventManager _ev, Event _e, BlocEvent _be) {
         param = p;
         m = _m;
         ev = _ev;
         e = _e;
+        be = _be;
         _liste = m.getList();
         initComponents();
         getContentPane().setBackground(new java.awt.Color(64,63,61));
@@ -343,6 +344,12 @@ public class Modification_evenement extends javax.swing.JFrame {
         e.setBHour(jFormattedTextField3.getText());
         e.setEDate(jFormattedTextField2.getText());
         e.setEHour(jFormattedTextField4.getText());
+        be.setTitr(jTextField1.getText());
+        be.setCat(Objects.requireNonNull(jComboBox1.getSelectedItem()).toString());
+        be.setImp(Objects.requireNonNull(jComboBox2.getSelectedItem()).toString());
+        be.setDes(jTextArea1.getText());
+        be.setDeb(jFormattedTextField1.getText(), jFormattedTextField3.getText());
+        be.setFin(jFormattedTextField2.getText(), jFormattedTextField4.getText());
         new SaveEvent().save(_liste);
         JPanel tmp = ev.getPanel();
         tmp.removeAll();
@@ -392,6 +399,7 @@ public class Modification_evenement extends javax.swing.JFrame {
     private final Parameters param;
     private final ListEvent _liste;
     private Event e;
+    private BlocEvent be;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

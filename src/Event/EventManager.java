@@ -52,20 +52,22 @@ public class EventManager{
         for (int i = 0; i < list.size(); i++) {
             panelH = new JPanel(new FlowLayout());
             //panelH.setBounds(0, 0, 500, 500);
-            JLabel txt = new JLabel(list.get(i));
+           /* JLabel txt = new JLabel(list.get(i));
             txt.setBounds(50, i*10, 250, 50);
             txt.setBackground(new Color(200, 0, 0));
-            panelH.add(txt);
-            //bloc = new BlocEvent(list.getTask(i), 150, 150, 150);
+            panelH.add(txt);*/
+            bloc = new BlocEvent(list.getTask(i), i*10, 150, 150, 150);
             modif = new EButton("Modifier", 0, 0, 100, 100, 255, 255, 255).get();
             supprim = new EButton("Supprimer", 0, 0, 100, 100, 255, 255, 255).get();
-            //panelH.add(bloc);
+            panelH.add(bloc);
             panelH.add(modif);
             panelH.add(supprim);
             int tmp = i;
             modif.addActionListener(evt -> {
                 try {
-                    new Modification_evenement(new Parameters(), _w, this, list.getTask(tmp));
+                    new Modification_evenement(new Parameters(), _w, this, list.getTask(tmp), bloc);
+                    new SaveEvent().save(list);
+                    refresh();
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
