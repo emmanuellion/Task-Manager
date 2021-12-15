@@ -20,7 +20,7 @@ public class ReaderEvent {
      * @author Evan et Emmanuel
      * @return Un objet de la classe 'ListEvent' permettant de stocker une liste d'évènements
      */
-    public ListEvent get_data(){
+    public ListEvent get_data() throws FileNotFoundException {
         try(Scanner scan = new Scanner(file)) {
             ListEvent list = new ListEvent();
             while(scan.hasNextLine()) {
@@ -40,9 +40,6 @@ public class ReaderEvent {
                 }
             }
             return list;
-        } catch (FileNotFoundException e) {
-            System.out.println(e);
-            return null;
         }
     }
 
@@ -50,7 +47,7 @@ public class ReaderEvent {
      * Sortie pour débugger la classe
      * @author Emmanuel
      */
-    public void print(){
+    public void print() throws FileNotFoundException {
         ListEvent list = get_data();
         for(int i = 0; i < list.size(); i++){
             System.out.println("Event => " + list.get(i) + "\n===============");

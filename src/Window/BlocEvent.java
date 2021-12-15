@@ -8,9 +8,9 @@ import java.awt.*;
 public class BlocEvent extends JPanel {
     /**
      * Ensemble des JLabels contenant les informations de l'évènement
-     * @author Evan
      */
     private JLabel TitrEvent, CatEvent, DebEvent, FinEvent, ImpEvent, DesEvent;
+
     /**
      * Créé une instance de BlocEvent
      * @param E Évènement dont on va afficher les informations dans ce bloc
@@ -39,14 +39,16 @@ public class BlocEvent extends JPanel {
         this.add(DebEvent);
         this.add(FinEvent);
     }
+
     /**
      * Va modifier le JLabel contenant le titre de l'évènement (nécessaire pour la fenêtre Modification_evenement)
      * @param titre Nouveau titre
      * @author Evan
      */
-    public void setTitr(String titre) {
+    public void setTitre(String titre) {
         TitrEvent = new JLabel(titre);
     }
+
     /**
      * Va modifier le JLabel contenant l'importance de l'évènement (nécessaire pour la fenêtre Modification_evenement)
      * @param imp Nouvelle importance
@@ -55,6 +57,7 @@ public class BlocEvent extends JPanel {
     public void setImp(String imp) {
         ImpEvent = new JLabel(imp);
     }
+
     /**
      * Va modifier le JLabel contenant la catégorie de l'évènement (nécessaire pour la fenêtre Modification_evenement)
      * @param cat Nouvelle catégorie
@@ -63,6 +66,7 @@ public class BlocEvent extends JPanel {
     public void setCat(String cat) {
         CatEvent = new JLabel("Catégorie : " + cat + ".");
     }
+
     /**
      * Va modifier le JLabel contenant la description de l'évènement (nécessaire pour la fenêtre Modification_evenement)
      * @param descrip Nouvelle description
@@ -71,6 +75,7 @@ public class BlocEvent extends JPanel {
     public void setDes(String descrip) {
         DesEvent = new JLabel(descrip);
     }
+
     /**
      * Va modifier le JLabel contenant la date et heure de début de l'évènement (nécessaire pour la fenêtre Modification_evenement)
      * @param BDate Nouvelle date de début
@@ -80,6 +85,7 @@ public class BlocEvent extends JPanel {
     public void setDeb(String BDate, String BHour) {
         DebEvent = new JLabel("Date de début de l'évènement : " + BDate + "  " + BHour);
     }
+
     /**
      * Va modifier le JLabel contenant la date et heure de fin de l'évènement (nécessaire pour la fenêtre Modification_evenement)
      * @param EDate Nouvelle date de début

@@ -12,7 +12,7 @@ public class ListEvent {
     /**
      * Instanciation du vecteur visant à contenir toutes les évènements
      */
-    private Vector<Event> l = new Vector<>(0);
+    private final Vector<Event> l = new Vector<>(0);
 
     /**
      * Cette méthode permet de récupérer le contenu d'un évènements à la i<i>ème</i> position dans le tableau des évènements

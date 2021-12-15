@@ -152,6 +152,7 @@ public class Event {
     /**
      * Cette méthode permet de modifier le titre de l'évènement
      * @author Evan
+     * @param param Le paramètre 'param' correspond au nouveau titre de l'évènement
      */
     public void setTitre(String param){
        title = param;
@@ -160,6 +161,7 @@ public class Event {
     /**
      * Cette méthode permet de modifier la catégorie de l'évènement
      * @author Evan
+      @param param Le paramètre 'param' correspond à la nouvelle catégorie de l'évènement
      */
     public void setCat(String param){
        category = param;
@@ -168,6 +170,7 @@ public class Event {
     /**
      * Cette méthode permet de modifier la description de l'évènement
      * @author Evan
+      @param param Le paramètre 'param' correspond à la nouvelle description de l'évènement
      */
     public void setDesc(String param){
        description = param;
@@ -176,6 +179,7 @@ public class Event {
     /**
      * Cette méthode permet de modifier la date de début de l'évènement
      * @author Evan
+      @param param Le paramètre 'param' correspond à la nouvelle date de début de l'évènement
      */
     public void setBDate(String param){
        b_date = param;
@@ -184,6 +188,7 @@ public class Event {
     /**
      * Cette méthode permet de modifier l'heure de début de l'évènement
      * @author Evan
+      @param param Le paramètre 'param' correspond à la nouvelle heure de début de l'évènement
      */
     public void setBHour(String param){
        b_hour = param;
@@ -192,6 +197,7 @@ public class Event {
     /**
      * Cette méthode permet de modifier la date de fin de l'évènement
      * @author Evan
+      @param param Le paramètre 'param' correspond à la nouvelle date de fin de l'évènement
      */
     public void setEDate(String param){
       e_date  = param;
@@ -200,6 +206,7 @@ public class Event {
     /**
      * Cette méthode permet de modifier l'heure de fin de l'évènement
      * @author Evan
+      @param param Le paramètre 'param' correspond à la nouvelle heure de fin de l'évènement
      */
     public void setEHour(String param){
        e_hour = param;
@@ -208,6 +215,7 @@ public class Event {
     /**
      * Cette méthode permet de modifier le degré d'importance de l'évènement
      * @author Evan
+      @param param Le paramètre 'param' correspond à la nouvelle importance de l'évènement
      */
     public void setImp(String param){
        importance = param;

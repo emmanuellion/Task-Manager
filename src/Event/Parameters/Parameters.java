@@ -46,8 +46,8 @@ public class Parameters {
     public void update() throws FileNotFoundException {
         try (Scanner scan = new Scanner(f)) {
             int nb_line = 0;
-            listCategory = new Vector<String>();
-            listImportance = new Vector<String>();
+            listCategory = new Vector<>();
+            listImportance = new Vector<>();
             while (scan.hasNextLine()) {
                 String line = scan.nextLine();
                 if (!Objects.equals(line, "")) {

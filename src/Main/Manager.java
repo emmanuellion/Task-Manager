@@ -16,16 +16,11 @@ import java.io.FileNotFoundException;
 public class Manager {
 
     /**
-     * Instaciation de l'objet 'Window' correspondant à la fenêtre principale
-     */
-    private static Window one;
-
-    /**
      * Cette méthode se lance automatiquement permettant de lancer le script principal du programme
      * @author Emmanuel
      */
-    public static void main(String[] args) {
-        one = new Window("Event Manager");
+    public static void main(String[] args) throws FileNotFoundException {
+        Window one = new Window("Event Manager");
         EButton openPopUpAddEvent = new EButton("Ajouter un évènement", 540, 240, 200,100,255,255,255);
         JButton but = openPopUpAddEvent.get();
         one.add(but);
@@ -33,7 +28,7 @@ public class Manager {
         tm.refresh();
         but.addActionListener(evt -> {
             try {
-                new Ajout_evenement(new Parameters(), one, tm);
+                new Ajout_evenement(new Parameters(), tm);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }

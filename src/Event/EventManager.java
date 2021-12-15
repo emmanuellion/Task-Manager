@@ -11,6 +11,7 @@ import Window.Window;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
@@ -51,8 +52,8 @@ public class EventManager{
      * Cette méthode permet de rafraichîr l'affichage des différents évènements à afficher
      * @author Emmmanuel
      */
-    public void refresh(){
-        System.out.println("===");
+    public void refresh() throws FileNotFoundException {
+        System.out.println("Refresh des évènements");
         ListEvent list = new ReaderEvent().get_data();
         panelV = new JPanel();
         panelV.setLayout(new BoxLayout(panelV, BoxLayout.PAGE_AXIS));
@@ -67,7 +68,7 @@ public class EventManager{
             txt.setBackground(new Color(200, 0, 0));
             panelH.add(txt);
             panelV.add(panelH);
-        }else {
+        } else {
             for (int i = 0; i < list.size(); i++) {
                 panelH = new JPanel(new FlowLayout());
                 bloc = new BlocEvent(list.getTask(i), i * 10, 150, 150, 150);
@@ -79,7 +80,7 @@ public class EventManager{
                 int tmp = i;
                 modif.addActionListener(evt -> {
                     try {
-                        new Modification_evenement(new Parameters(), _w, this, tmp, bloc);
+                        new Modification_evenement(new Parameters(), this, tmp, bloc);
                         new SaveEvent().save(list);
                         refresh();
                     } catch (IOException e) {
