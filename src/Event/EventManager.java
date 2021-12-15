@@ -93,6 +93,7 @@ public class EventManager{
                     try {
                         new SaveEvent().save(list);
                         refresh();
+                        _w.repaint();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -100,8 +101,8 @@ public class EventManager{
                 panelV.add(panelH);
             }
         }
-        if (_w.getContentPane().getComponents().length > 2) {
-            _w.getContentPane().remove(2);
+        if (_w.getContentPane().getComponents().length > 1) {
+            _w.getContentPane().remove(1);
         }
         _w.add(panelV);
         _w.pack();
